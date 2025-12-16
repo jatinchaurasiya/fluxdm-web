@@ -14,7 +14,7 @@ export function PricingSection() {
     // For now, we'll let it render with defaults/fetched values.
 
     return (
-        <section className="relative min-h-screen overflow-hidden py-12 bg-background text-foreground">
+        <section className="relative min-h-screen overflow-hidden py-12 bg-transparent text-foreground">
             <div id="pricing" className="mx-auto w-full max-w-6xl space-y-10 px-4">
 
                 {/* Header */}
