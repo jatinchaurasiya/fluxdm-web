@@ -1,0 +1,117 @@
+{
+    "hero": {
+        "badge": "Desktop-App v1.0",
+        "title1": "Automatisiere Deine",
+        "title2": "Instagram-Einnahmen",
+        "description": "Verwandle Kommentare in Verkäufe mit dem einzigen Desktop-First-Automatisierungstool. Sicher, lokal und für Wachstum gebaut.",
+        "cta": {
+            "download": "Für Windows herunterladen",
+            "features": "Funktionen ansehen"
+        }
+    },
+    "nav": {
+        "features": "Funktionen",
+        "transformation": "Transformation",
+        "wallOfLove": "Wall of Love",
+        "getAccess": "Zugang erhalten",
+        "download": "Jetzt herunterladen"
+    },
+    "transformation": {
+        "headline": "Bereit, dein IG völlig zu verändern?",
+        "subheadline": "Hör auf, Links manuell per DM zu senden. Starte noch heute deinen Wachstumsmotor.",
+        "cta": "Sichere dir jetzt deinen Rabatt",
+        "cards": {
+            "smarter": {
+                "title": "Arbeite schlauer",
+                "desc": "Lass den Bot die langweiligen Dinge erledigen.",
+                "list": [
+                    "Einrichtung in 5 Minuten",
+                    "Einmal ausführen oder für immer",
+                    "Verpasse nie einen Lead",
+                    "Konzentriere dich auf das Erstellen"
+                ]
+            },
+            "convert": {
+                "title": "Besser konvertieren",
+                "desc": "Verwandle Engagement in Umsatz.",
+                "list": [
+                    "2x höhere Konversion als Link in Bio",
+                    "Schlage zu, solange das Interesse heiß ist",
+                    "Verfolge Ergebnisse in Echtzeit",
+                    "Verwandle Kommentare in Kunden"
+                ]
+            },
+            "faster": {
+                "title": "Schneller wachsen",
+                "desc": "Steigere deine algorithmische Reichweite.",
+                "list": [
+                    "Personalisiere jede Interaktion",
+                    "Starte echte Gespräche",
+                    "Schaffe dauerhafte Verbindungen",
+                    "Baue eine treue Anhängerschaft auf"
+                ]
+            }
+        }
+    },
+    "features": {
+        "row1": {
+            "title": "Verwandle Kommentare in Geld. Automatisch.",
+            "desc": "Hör auf, Links manuell einzufügen. FluxDM erkennt Schlüsselwörter in Kommentaren (wie \"PREIS\" oder \"ANLEITUNG\") und sendet dem Benutzer sofort eine DM mit deinem Checkout-Link. Funktioniert für Reels, Posts und Live.",
+            "badge": "24/7 Vertriebsmitarbeiter"
+        },
+        "row2": {
+            "title": "Plane einen Monat Inhalt in Minuten.",
+            "desc": "Drag, Drop und Auto-Publish. Im Gegensatz zu anderen Tools bleiben deine Medien bis zur Veröffentlichung auf deiner Festplatte. Keine Cloud-Uploads, kein Kompressionsverlust.",
+            "badge": "Set & Forget"
+        },
+        "row3": {
+            "title": "Deine Daten. Dein Gerät. Keine monatlichen Gebühren.",
+            "desc": "FluxDM läuft lokal auf deinem Rechner. Wir sehen niemals deine DMs, deine Leads oder deine Token. Hör auf, 150 $/Monat für Cloud-Abonnements zu zahlen, die deine Daten als Geisel halten.",
+            "badge": "100% Privat"
+        },
+        "bento": {
+            "headline": "Alles, was du zum Skalieren brauchst",
+            "subheadline": "Leistungsstarke Funktionen für ernsthafte Content-Ersteller.",
+            "unlimited": {
+                "title": "Unbegrenzte Konten",
+                "desc": "Verbinde so viele Seiten, wie du willst."
+            },
+            "smartDelays": {
+                "title": "Intelligente Verzögerungen",
+                "desc": "Menschliche Tippverzögerungen zur Vermeidung von Spam-Filtern."
+            },
+            "attachments": {
+                "title": "Medienanhänge",
+                "desc": "Sende PDFs, Bilder und Sprachnotizen in DMs."
+            },
+            "darkMode": {
+                "title": "Dunkelmodus",
+                "desc": "Gebaut für Nachtschwärmer."
+            }
+        }
+    },
+    "testimonials": {
+        "headline": "Mehr Aufrufe. Mehr Verkäufe. Weniger Arbeit.",
+        "subheadline": "Sieh dir an, wie Top-Creator FluxDM nutzen, um den Algorithmus zu hacken und ihre Einnahmen zu automatisieren.",
+        "badge": "Echte Creator-Ergebnisse"
+    },
+    "footer": {
+        "tagline": "Das einzige Desktop-First-Automatisierungstool für Instagram-Creator.",
+        "product": "Produkt",
+        "features": "Funktionen",
+        "pricing": "Preise",
+        "download": "Herunterladen",
+        "changelog": "Änderungsprotokoll",
+        "company": "Unternehmen",
+        "about": "Über uns",
+        "blog": "Blog",
+        "careers": "Karriere",
+        "legal": "Rechtliches",
+        "privacy": "Datenschutz",
+        "terms": "AGB",
+        "security": "Sicherheit",
+        "status": "Systemstatus: Betriebsbereit",
+        "rights": "Alle Rechte vorbehalten.",
+        "builtBy": "Gebaut von"
+    }
+}

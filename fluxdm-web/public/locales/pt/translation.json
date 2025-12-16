@@ -1,0 +1,117 @@
+{
+    "hero": {
+        "badge": "App Desktop v1.0",
+        "title1": "Automatize Sua",
+        "title2": "Receita do Instagram",
+        "description": "Transforme comentários em vendas com a única ferramenta de automação desktop-first. Seguro, local e feito para o crescimento.",
+        "cta": {
+            "download": "Baixar para Windows",
+            "features": "Ver Recursos"
+        }
+    },
+    "nav": {
+        "features": "Recursos",
+        "transformation": "Transformação",
+        "wallOfLove": "Mural do Amor",
+        "getAccess": "Obter Acesso",
+        "download": "Baixar Agora"
+    },
+    "transformation": {
+        "headline": "Pronto para transformar totalmente seu IG?",
+        "subheadline": "Pare de enviar links manualmente por DM. Comece a automatizar seu motor de crescimento hoje.",
+        "cta": "Obtenha Seu Desconto Agora",
+        "cards": {
+            "smarter": {
+                "title": "Trabalhe de Forma Mais Inteligente",
+                "desc": "Deixe o bot lidar com as coisas chatas.",
+                "list": [
+                    "Configuração em 5 minutos",
+                    "Execute uma vez ou para sempre",
+                    "Nunca perca um lead",
+                    "Foque na criação"
+                ]
+            },
+            "convert": {
+                "title": "Converta Melhor",
+                "desc": "Transforme engajamento em receita.",
+                "list": [
+                    "Conversão 2x maior que Link na Bio",
+                    "Ataque enquanto o interesse está quente",
+                    "Acompanhe resultados em tempo real",
+                    "Transforme comentários em clientes"
+                ]
+            },
+            "faster": {
+                "title": "Cresça Mais Rápido",
+                "desc": "Aumente seu alcance algorítmico.",
+                "list": [
+                    "Personalize cada interação",
+                    "Comece conversas reais",
+                    "Crie conexões duradouras",
+                    "Construa um público leal"
+                ]
+            }
+        }
+    },
+    "features": {
+        "row1": {
+            "title": "Transforme Comentários em Dinheiro. Automaticamente.",
+            "desc": "Pare de colar links manualmente. FluxDM detecta palavras-chave em comentários (como \"PREÇO\" ou \"GUIA\") e instantaneamente envia um DM para o usuário com seu link de checkout. Funciona para Reels, Posts e Live.",
+            "badge": "Representante de Vendas 24/7"
+        },
+        "row2": {
+            "title": "Planeje um Mês de Conteúdo em Minutos.",
+            "desc": "Arraste, solte e publique automaticamente. Diferente de outras ferramentas, sua mídia fica no seu disco rígido até o momento da publicação. Sem uploads para nuvem, sem perda de compressão.",
+            "badge": "Configure e Esqueça"
+        },
+        "row3": {
+            "title": "Seus Dados. Seu Dispositivo. Sem Mensalidades.",
+            "desc": "FluxDM roda localmente na sua máquina. Nunca vemos seus DMs, seus leads ou seus tokens. Pare de pagar $150/mês por assinaturas na nuvem que mantêm seus dados reféns.",
+            "badge": "100% Privado"
+        },
+        "bento": {
+            "headline": "Tudo o que você precisa para escalar",
+            "subheadline": "Recursos poderosos construídos para criadores de conteúdo sérios.",
+            "unlimited": {
+                "title": "Contas Ilimitadas",
+                "desc": "Conecte quantas páginas quiser."
+            },
+            "smartDelays": {
+                "title": "Atrasos Inteligentes",
+                "desc": "Atrasos de digitação semelhantes aos humanos para evitar filtros de spam."
+            },
+            "attachments": {
+                "title": "Anexos de Mídia",
+                "desc": "Envie PDFs, Imagens e Notas de Voz em DMs."
+            },
+            "darkMode": {
+                "title": "Modo Escuro",
+                "desc": "Feito para notívagos."
+            }
+        }
+    },
+    "testimonials": {
+        "headline": "Mais Visualizações. Mais Vendas. Menos Trabalho.",
+        "subheadline": "Veja como os principais criadores usam FluxDM para hackear o algoritmo e automatizar sua receita.",
+        "badge": "Resultados Reais de Criadores"
+    },
+    "footer": {
+        "tagline": "A única ferramenta de automação desktop-first para criadores do Instagram.",
+        "product": "Produto",
+        "features": "Recursos",
+        "pricing": "Preços",
+        "download": "Baixar",
+        "changelog": "Registro de mudanças",
+        "company": "Empresa",
+        "about": "Sobre",
+        "blog": "Blog",
+        "careers": "Carreiras",
+        "legal": "Legal",
+        "privacy": "Privacidade",
+        "terms": "Termos",
+        "security": "Segurança",
+        "status": "Status do Sistema: Operacional",
+        "rights": "Todos os direitos reservados.",
+        "builtBy": "Construído por"
+    }
+}

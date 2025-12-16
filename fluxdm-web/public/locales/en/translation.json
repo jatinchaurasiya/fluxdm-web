@@ -1,0 +1,161 @@
+{
+    "hero": {
+        "badge": "Desktop App v1.0",
+        "title1": "The Growth Engine",
+        "title2": "You Actually Own",
+        "description": "Stop renting your automation. FluxDM runs 100% locally on your machine—unlimited lanes, zero monthly fees, and bulletproof security.",
+        "cta": {
+            "download": "Download for Windows - Free",
+            "features": "Explore the Logic"
+        }
+    },
+    "nav": {
+        "features": "Capabilities",
+        "transformation": "ROI",
+        "wallOfLove": "Creators",
+        "getAccess": "Get FluxDM",
+        "download": "Start Now"
+    },
+    "transformation": {
+        "headline": "Total Control, Zero Overhead.",
+        "subheadline": "Ditch the expensive cloud subscriptions. Build a sales machine that works while you sleep.",
+        "cta": "Claim Your Founder's Discount",
+        "cards": {
+            "smarter": {
+                "title": "Automate the Boring",
+                "desc": "Reclaim 20 hours a week.",
+                "list": [
+                    "Setup in < 5 minutes",
+                    "Runs in background 24/7",
+                    "Capture 100% of leads",
+                    "Zero downtime"
+                ]
+            },
+            "convert": {
+                "title": "Print Revenue",
+                "desc": "Turn comments into cash.",
+                "list": [
+                    "2x Conversion vs Linktree",
+                    "Instant checkout DMs",
+                    "Real-time ROI tracking",
+                    "Monetize every comment"
+                ]
+            },
+            "faster": {
+                "title": "Hack the Algorithm",
+                "desc": "Engagement on autopilot.",
+                "list": [
+                    "Hyper-personalized replies",
+                    "Boost post visibility",
+                    "Build 'Superfans' instantly",
+                    "Safe, human-like delays"
+                ]
+            }
+        }
+    },
+    "features": {
+        "row1": {
+            "title": "Turn Comments into Paychecks.",
+            "desc": "Stop manually pasting links. Detect keywords like \"PRICE\" or \"GUIDE\" and trigger instant, high-converting checkout flows. Works across Reels, Posts, and Live.",
+            "badge": "24/7 Closing Agent"
+        },
+        "row2": {
+            "title": "Plan 30 Days of Viral Content in 60 Seconds.",
+            "desc": "Drag, drop, done. Your high-res media stays on your SSD until the exact second it posts. No cloud compression, no quality loss, no monthly storage fees.",
+            "badge": "Visual Scheduler"
+        },
+        "row3": {
+            "title": "Your Hardware. Your Data. Your Rules.",
+            "desc": "We are anti-cloud. FluxDM runs locally, meaning we never see your DMs, leads, or tokens. Stop paying $150/mo to companies that hold your business hostage.",
+            "badge": "Encrypted & Local"
+        },
+        "bento": {
+            "headline": "The Toolkit for Power Users",
+            "subheadline": "Engineered for creators who treat content as a business.",
+            "unlimited": {
+                "title": "Unlimited Accounts",
+                "desc": "Scale 1 or 100 pages. No extra cost."
+            },
+            "smartDelays": {
+                "title": "Human Emulation",
+                "desc": "Variable typing delays to bypass spam filters."
+            },
+            "attachments": {
+                "title": "Rich Media DMs",
+                "desc": "Auto-send PDFs, Voice Notes, & Images."
+            },
+            "darkMode": {
+                "title": "Midnight Mode",
+                "desc": "Sleek, battery-saving dark UI."
+            }
+        }
+    },
+    "testimonials": {
+        "headline": "The Secret Weapon of Top 1%",
+        "subheadline": "How smart creators are escaping the time-for-money trap.",
+        "badge": "Verified Results"
+    },
+    "footer": {
+        "tagline": "The only desktop-first automation suite for serious Instagram businesses.",
+        "product": "Product",
+        "features": "Capabilities",
+        "pricing": "Pricing",
+        "download": "Download",
+        "changelog": "Changelog",
+        "company": "Company",
+        "about": "Mission",
+        "blog": "Engineering Blog",
+        "careers": "Careers",
+        "legal": "Legal",
+        "privacy": "Privacy Protocol",
+        "terms": "Terms of Use",
+        "security": "Security Architecture",
+        "status": "System Status: Online",
+        "rights": "All rights reserved.",
+        "builtBy": "Engineered by"
+    },
+    "pricing": {
+        "title": "Pay Once. Grow Forever.",
+        "subtitle": "Stop renting your software. Get a lifetime license.",
+        "starter": {
+            "title": "Starter",
+            "price": "$0",
+            "cta": "Download Demo",
+            "features": [
+                "1 Account",
+                "50 Auto-replies/day",
+                "Basic Scheduler"
+            ]
+        },
+        "pro": {
+            "title": "Pro",
+            "badge": "LIFETIME LICENSE",
+            "cta": "Buy Lifetime License",
+            "features": [
+                "Unlimited Accounts",
+                "Unlimited Replies",
+                "Remove Watermark",
+                "Priority Support"
+            ]
+        },
+        "agency": {
+            "title": "Agency",
+            "cta": "Get Agency Access",
+            "features": [
+                "Everything in Pro",
+                "Your Own Branding",
+                "Resell to Clients",
+                "Client Management Dashboard"
+            ]
+        },
+        "faq": {
+            "headline": "Frequently Asked Questions",
+            "q1": "Is this really a one-time payment?",
+            "a1": "Yes. We hate subscriptions as much as you do. You pay once and own this version of FluxDM forever on your machine.",
+            "q2": "Does it work on Mac?",
+            "a2": "Currently, FluxDM is optimized for Windows. A Mac version is in development. Join the waitlist to be notified.",
+            "q3": "Is it safe for my account?",
+            "a3": "100%. Since FluxDM runs locally and uses human-like typing delays, it mimics real user behavior. We do not use unauthorized API calls that trigger bans."
+        }
+    }
+}
