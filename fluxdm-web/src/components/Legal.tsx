@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Shield, Lock, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +13,7 @@ const Footer = () => {
     const closeModal = () => setActiveModal(null);
 
     return (
-        <footer className="bg-background border-t border-border pt-20 pb-10">
+        <footer className="relative z-20 bg-background border-t border-border pt-20 pb-10">
             <div className="container mx-auto px-4 max-w-7xl">
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
@@ -60,14 +61,14 @@ const Footer = () => {
                         <h4 className="text-foreground font-semibold mb-4">{t('footer.legal')}</h4>
                         <ul className="space-y-3 text-sm text-zinc-500 dark:text-zinc-400">
                             <li>
-                                <button onClick={() => openModal('privacy')} className="hover:text-foreground transition-colors flex items-center gap-2">
-                                    <Shield size={14} /> {t('footer.privacy')}
-                                </button>
+                                <Link to="/privacy-policy" className="hover:text-foreground hover:underline transition-colors flex items-center gap-2">
+                                    <Shield size={14} /> Privacy Policy
+                                </Link>
                             </li>
                             <li>
-                                <button onClick={() => openModal('terms')} className="hover:text-foreground transition-colors flex items-center gap-2">
-                                    <FileText size={14} /> {t('footer.terms')}
-                                </button>
+                                <Link to="/terms-of-service" className="hover:text-foreground hover:underline transition-colors flex items-center gap-2">
+                                    <FileText size={14} /> Terms of Service
+                                </Link>
                             </li>
                             <li>
                                 <button onClick={() => openModal('data')} className="hover:text-red-500 transition-colors flex items-center gap-2">

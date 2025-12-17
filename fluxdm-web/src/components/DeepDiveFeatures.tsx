@@ -33,6 +33,7 @@ const FeatureRow = ({ title, description, badge, isReversed = false }: FeatureRo
                 </p>
             </motion.div>
 
+
             {/* Visual Component (Placeholder) */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95, x: isReversed ? -50 : 50 }}
