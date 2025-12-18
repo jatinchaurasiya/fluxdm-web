@@ -9,7 +9,6 @@ const Footer = () => {
     const { t } = useTranslation();
     const [activeModal, setActiveModal] = useState<string | null>(null);
 
-    const openModal = (type: string) => setActiveModal(type);
     const closeModal = () => setActiveModal(null);
 
     return (

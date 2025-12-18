@@ -102,7 +102,7 @@ export function PricingSection() {
                         viewport={{ once: true }}
                         className="relative z-10 grid md:grid-cols-3 gap-8 max-w-7xl mx-auto"
                     >
-                        {plans.map((plan, index) => (
+                        {plans.map((plan) => (
                             <div
                                 key={plan.name}
                                 className={cn(
