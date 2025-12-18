@@ -3,12 +3,9 @@
 import { Check, Minus, MoveRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useLocalizedPricing } from "@/hooks/useLocalizedPricing";
 import { Link } from "react-router-dom";
 
 function Pricing() {
-    const { symbol, proPrice, agencyPrice, loading } = useLocalizedPricing();
-
     return (
         <div className="w-full py-10 lg:py-20">
             <div className="container mx-auto">
@@ -19,14 +16,14 @@ function Pricing() {
                             Choose the right plan for you
                         </h2>
                         <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl text-center">
-                            Whether you are a solo creator or scaling an agency, we have a lifetime deal for you.
+                            Whether you are a solo creator or scaling an agency, we have a deal for you.
                         </p>
                     </div>
 
-                    {/* Grid Container - 3 Columns on LG: Labels | Solo | Agency */}
-                    <div className="grid text-left w-full grid-cols-1 lg:grid-cols-3 divide-x pt-20 border-x border-b rounded-lg">
+                    {/* Grid Container - 4 Columns on LG: Labels | Solo | Agency | White Label */}
+                    <div className="grid text-left w-full grid-cols-1 lg:grid-cols-4 divide-x pt-20 border-x border-b rounded-lg">
 
-                        {/* Header Row - Empty 1st col, Plan Names in 2nd/3rd */}
+                        {/* Header Row - Empty 1st col, Plan Names in 2nd/3rd/4th */}
                         <div className="hidden lg:block col-span-1 p-6"></div>
 
                         {/* Solo Plan Header */}
@@ -38,13 +35,8 @@ function Pricing() {
                                 </p>
                             </div>
                             <div className="flex items-baseline gap-1 mt-4">
-                                <span className="text-2xl text-muted-foreground">{symbol}</span>
-                                {loading ? (
-                                    <div className="h-8 w-16 bg-muted animate-pulse rounded" />
-                                ) : (
-                                    <span className="text-4xl font-bold">{proPrice}</span>
-                                )}
-                                <span className="text-sm text-muted-foreground"> / lifetime</span>
+                                <span className="text-4xl font-bold">$6.99</span>
+                                <span className="text-sm text-muted-foreground"> / month</span>
                             </div>
                             <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" className="w-full mt-4 block">
                                 <Button variant="outline" className="w-full gap-2">
@@ -65,117 +57,137 @@ function Pricing() {
                                 </p>
                             </div>
                             <div className="flex items-baseline gap-1 mt-4">
-                                <span className="text-2xl text-muted-foreground">{symbol}</span>
-                                {loading ? (
-                                    <div className="h-8 w-16 bg-muted animate-pulse rounded" />
-                                ) : (
-                                    <span className="text-4xl font-bold">{agencyPrice}</span>
-                                )}
-                                <span className="text-sm text-muted-foreground"> / lifetime</span>
+                                <span className="text-4xl font-bold">$79.99</span>
+                                <span className="text-sm text-muted-foreground"> / month</span>
                             </div>
-                            <Link to="/contact-sales" className="w-full mt-4 block">
+                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" className="w-full mt-4 block">
                                 <Button className="w-full gap-2 bg-blue-600 hover:bg-blue-500 text-white">
                                     Get Agency <MoveRight className="w-4 h-4" />
+                                </Button>
+                            </a>
+                        </div>
+
+                        {/* White Label Plan Header */}
+                        <div className="px-6 py-8 flex flex-col gap-4 bg-muted/20">
+                            <div>
+                                <p className="text-2xl font-bold">White Label</p>
+                                <p className="text-sm text-muted-foreground mt-2">
+                                    Full rebranding and custom domain.
+                                </p>
+                            </div>
+                            <div className="flex items-baseline gap-1 mt-4">
+                                <span className="text-3xl font-bold">Contact Sales</span>
+                            </div>
+                            <Link to="/contact-sales" className="w-full mt-4 block">
+                                <Button variant="outline" className="w-full gap-2">
+                                    Contact Sales <MoveRight className="w-4 h-4" />
                                 </Button>
                             </Link>
                         </div>
 
                         {/* FEATURE SECTION 1: CORE */}
-                        <div className="col-span-1 lg:col-span-3 bg-muted/50 p-4 font-semibold text-sm uppercase tracking-wider text-muted-foreground">
+                        <div className="col-span-1 lg:col-span-4 bg-muted/50 p-4 font-semibold text-sm uppercase tracking-wider text-muted-foreground">
                             Core Features
                         </div>
 
                         {/* Unlimited Automation */}
                         <div className="hidden lg:flex items-center p-4 font-medium text-sm">Unlimited Automation Flows</div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
-                            <span className="lg:hidden text-sm font-medium">Unlimited Automation Flows</span>
+                            <span className="lg:hidden text-sm font-medium">Solo: Unlimited Automation</span>
                             <Check className="w-5 h-5 text-green-500" />
                         </div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
-                            <span className="lg:hidden text-sm font-medium">Unlimited Automation Flows</span>
+                            <span className="lg:hidden text-sm font-medium">Agency: Unlimited Automation</span>
+                            <Check className="w-5 h-5 text-green-500" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">White Label: Unlimited Automation</span>
                             <Check className="w-5 h-5 text-green-500" />
                         </div>
 
                         {/* Smart Scheduling */}
                         <div className="hidden lg:flex items-center p-4 font-medium text-sm">Smart Scheduling</div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Smart Scheduling</span>
+                            <span className="lg:hidden text-sm font-medium">Solo: Smart Scheduling</span>
                             <Check className="w-5 h-5 text-green-500" />
                         </div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Smart Scheduling</span>
+                            <span className="lg:hidden text-sm font-medium">Agency: Smart Scheduling</span>
+                            <Check className="w-5 h-5 text-green-500" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
+                            <span className="lg:hidden text-sm font-medium">White Label: Smart Scheduling</span>
                             <Check className="w-5 h-5 text-green-500" />
                         </div>
 
-                        {/* Auto-DM Engine */}
-                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Auto-DM Engine</div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Auto-DM Engine</span>
-                            <Check className="w-5 h-5 text-green-500" />
-                        </div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Auto-DM Engine</span>
-                            <Check className="w-5 h-5 text-green-500" />
-                        </div>
-
-                        {/* Data Privacy */}
-                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Local Data Privacy (Runs on Device)</div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Local Data Privacy</span>
-                            <Check className="w-5 h-5 text-green-500" />
-                        </div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Local Data Privacy</span>
-                            <Check className="w-5 h-5 text-green-500" />
-                        </div>
-
-                        {/* FEATURE SECTION 2: ADVANCED */}
-                        <div className="col-span-1 lg:col-span-3 bg-muted/50 p-4 font-semibold text-sm uppercase tracking-wider text-muted-foreground mt-4 lg:mt-0">
+                        {/* FEATURE SECTION 2: AGENCY & GROWTH */}
+                        <div className="col-span-1 lg:col-span-4 bg-muted/50 p-4 font-semibold text-sm uppercase tracking-wider text-muted-foreground mt-4 lg:mt-0">
                             Agency & Growth
                         </div>
 
-                        {/* White Label */}
-                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">White Label License (Remove Branding)</div>
+                        {/* Client Management */}
+                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Client Management Dashboard</div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
-                            <span className="lg:hidden text-sm font-medium">White Label License</span>
+                            <span className="lg:hidden text-sm font-medium">Solo: Client Management</span>
                             <Minus className="w-5 h-5 text-muted-foreground/30" />
                         </div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0 bg-blue-50/5 dark:bg-blue-900/10">
-                            <span className="lg:hidden text-sm font-medium">White Label License</span>
+                            <span className="lg:hidden text-sm font-medium">Agency: Client Management</span>
                             <Check className="w-5 h-5 text-blue-500" />
                         </div>
-
-                        {/* Client Dashboard */}
-                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Client Management Dashboard</div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Client Management Dashboard</span>
-                            <Minus className="w-5 h-5 text-muted-foreground/30" />
-                        </div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t bg-blue-50/5 dark:bg-blue-900/10">
-                            <span className="lg:hidden text-sm font-medium">Client Management Dashboard</span>
-                            <Check className="w-5 h-5 text-blue-500" />
-                        </div>
-
-                        {/* Commercial Rights */}
-                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Commercial Resell Rights</div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Commercial Resell Rights</span>
-                            <Minus className="w-5 h-5 text-muted-foreground/30" />
-                        </div>
-                        <div className="p-4 flex items-center justify-between lg:justify-center border-t bg-blue-50/5 dark:bg-blue-900/10">
-                            <span className="lg:hidden text-sm font-medium">Commercial Resell Rights</span>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">White Label: Client Management</span>
                             <Check className="w-5 h-5 text-blue-500" />
                         </div>
 
                         {/* Priority Support */}
                         <div className="hidden lg:flex items-center p-4 font-medium text-sm">Priority Support</div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t">
-                            <span className="lg:hidden text-sm font-medium">Priority Support</span>
+                            <span className="lg:hidden text-sm font-medium">Solo: Priority Support</span>
                             <Minus className="w-5 h-5 text-muted-foreground/30" />
                         </div>
                         <div className="p-4 flex items-center justify-between lg:justify-center border-t bg-blue-50/5 dark:bg-blue-900/10">
-                            <span className="lg:hidden text-sm font-medium">Priority Support</span>
+                            <span className="lg:hidden text-sm font-medium">Agency: Priority Support</span>
                             <Check className="w-5 h-5 text-blue-500" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t">
+                            <span className="lg:hidden text-sm font-medium">White Label: Priority Support</span>
+                            <Check className="w-5 h-5 text-blue-500" />
+                        </div>
+
+                        {/* FEATURE SECTION 3: ENTERPRISE */}
+                        <div className="col-span-1 lg:col-span-4 bg-muted/50 p-4 font-semibold text-sm uppercase tracking-wider text-muted-foreground mt-4 lg:mt-0">
+                            Enterprise / White Label
+                        </div>
+
+                        {/* Remove FluxDM Branding */}
+                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Remove Branding</div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">Solo: Remove Branding</span>
+                            <Minus className="w-5 h-5 text-muted-foreground/30" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0 bg-blue-50/5 dark:bg-blue-900/10">
+                            <span className="lg:hidden text-sm font-medium">Agency: Remove Branding</span>
+                            <Minus className="w-5 h-5 text-muted-foreground/30" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">White Label: Remove Branding</span>
+                            <Check className="w-5 h-5 text-purple-500" />
+                        </div>
+
+                        {/* Custom Domain */}
+                        <div className="hidden lg:flex items-center p-4 font-medium text-sm">Custom Domain & SSL</div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">Solo: Custom Domain</span>
+                            <Minus className="w-5 h-5 text-muted-foreground/30" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0 bg-blue-50/5 dark:bg-blue-900/10">
+                            <span className="lg:hidden text-sm font-medium">Agency: Custom Domain</span>
+                            <Minus className="w-5 h-5 text-muted-foreground/30" />
+                        </div>
+                        <div className="p-4 flex items-center justify-between lg:justify-center border-t lg:border-t-0">
+                            <span className="lg:hidden text-sm font-medium">White Label: Custom Domain</span>
+                            <Check className="w-5 h-5 text-purple-500" />
                         </div>
 
                     </div>
