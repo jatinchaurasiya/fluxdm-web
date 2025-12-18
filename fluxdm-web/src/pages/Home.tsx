@@ -8,19 +8,13 @@ import Navbar from "@/components/Navbar";
 import { FluxLandingHero } from "@/components/ui/flux-landing-hero";
 import { HeroVideo } from "@/components/HeroVideo";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-    const { t } = useTranslation();
 
     return (
         <AuroraBackground className="min-h-screen selection:bg-blue-500/30">
             <Navbar />
-            <FluxLandingHero
-                badge={t('hero.badge')}
-                title1={t('hero.title1')}
-                title2={t('hero.title2')}
-            />
+            <FluxLandingHero />
             <HeroVideo />
 
             <div className="space-y-12 pb-0">

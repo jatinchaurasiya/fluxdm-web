@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { CheckCircle2, Zap, Moon, Layers } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 // ... (FeatureRowProps and FeatureRow component remain unchanged, since they take props) ...
 interface FeatureRowProps {
@@ -71,7 +70,6 @@ const BentoItem = ({ title, description, icon: Icon }: { title: string; descript
 );
 
 export const DeepDiveFeatures = () => {
-    const { t } = useTranslation();
 
     return (
         <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -79,24 +77,24 @@ export const DeepDiveFeatures = () => {
 
                 {/* Row 1: The Automation Engine */}
                 <FeatureRow
-                    title={t('features.row1.title')}
-                    description={t('features.row1.desc')}
-                    badge={t('features.row1.badge')}
+                    title="Comment-to-Cash Engine"
+                    description="Automatically send links, discounts, or playbooks the moment someone comments. Capture leads while interest is at its peak."
+                    badge="Instantly Responsive"
                 />
 
                 {/* Row 2: The Visual Scheduler */}
                 <FeatureRow
-                    title={t('features.row2.title')}
-                    description={t('features.row2.desc')}
-                    badge={t('features.row2.badge')}
+                    title="Story Mention ROI"
+                    description="Turn every @mention into a connection. Automatically thank fans and repost content to build social proof."
+                    badge="Viral Growth"
                     isReversed
                 />
 
                 {/* Row 3: Privacy & CRM */}
                 <FeatureRow
-                    title={t('features.row3.title')}
-                    description={t('features.row3.desc')}
-                    badge={t('features.row3.badge')}
+                    title="The 'Follow-to-Unlock' Hack"
+                    description="Force growth by gating your DMs. Users must follow you to receive the automated link."
+                    badge="Growth Hack"
                 />
 
                 {/* Bento Grid */}
@@ -107,29 +105,29 @@ export const DeepDiveFeatures = () => {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl font-bold text-foreground mb-4">{t('features.bento.headline')}</h2>
-                        <p className="text-muted-foreground">{t('features.bento.subheadline')}</p>
+                        <h2 className="text-3xl font-bold text-foreground mb-4">Built for Power Users</h2>
+                        <p className="text-muted-foreground">Everything you need to scale your automation empire.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <BentoItem
-                            title={t('features.bento.unlimited.title')}
-                            description={t('features.bento.unlimited.desc')}
+                            title="Unlimited Accounts"
+                            description="Scale 1 or 100 pages. No extra cost."
                             icon={CheckCircle2}
                         />
                         <BentoItem
-                            title={t('features.bento.smartDelays.title')}
-                            description={t('features.bento.smartDelays.desc')}
+                            title="Human Emulation"
+                            description="Variable typing delays to behave exactly like a human."
                             icon={Zap}
                         />
                         <BentoItem
-                            title={t('features.bento.attachments.title')}
-                            description={t('features.bento.attachments.desc')}
+                            title="Smart Link Delivery"
+                            description="Instantly send high-converting links and personalized images to turn every DM into a potential sale."
                             icon={Layers}
                         />
                         <BentoItem
-                            title={t('features.bento.darkMode.title')}
-                            description={t('features.bento.darkMode.desc')}
+                            title="Midnight Mode"
+                            description="Sleek, battery-saving dark UI."
                             icon={Moon}
                         />
                     </div>

@@ -9,8 +9,6 @@ import {
     CheckCircle2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useTranslation } from "react-i18next";
-
 
 function FloatingIcon({
     icon: Icon,
@@ -81,16 +79,7 @@ function FloatingIcon({
     );
 }
 
-function FluxLandingHero({
-    badge,
-    title1,
-    title2,
-}: {
-    badge?: string;
-    title1?: string;
-    title2?: string;
-}) {
-    const { t } = useTranslation();
+function FluxLandingHero() {
     const fadeUpVariants: Variants = {
         hidden: { opacity: 0, y: 30 },
         visible: (i: number) => ({
@@ -164,7 +153,7 @@ function FluxLandingHero({
                     >
                         <CheckCircle2 className="h-4 w-4 text-blue-500" />
                         <span className="text-sm text-black/60 dark:text-white/60 tracking-wide">
-                            {badge || t('hero.badge')}
+                            v1.0 Public Beta
                         </span>
                     </motion.div>
 
@@ -176,14 +165,14 @@ function FluxLandingHero({
                         animate="visible"
                     >
                         <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold mb-6 md:mb-8 tracking-tight text-foreground">
-                            {title1 || t('hero.title1')}
+                            Turn Instagram Comments
                             <br />
                             <span
                                 className={cn(
                                     "bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 dark:from-blue-300 dark:via-indigo-200 dark:to-purple-300"
                                 )}
                             >
-                                {title2 || t('hero.title2')}
+                                into Revenue. On Autopilot.
                             </span>
                         </h1>
                     </motion.div>
@@ -196,7 +185,7 @@ function FluxLandingHero({
                         animate="visible"
                     >
                         <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed font-light tracking-wide max-w-2xl mx-auto px-4">
-                            {t('hero.description')}
+                            Stop manually DMing links. FluxDM instantly converts your comments, story replies, and mentions into sales conversations 24/7. Built for serious creators and scaling agencies.
                         </p>
                     </motion.div>
 
@@ -208,12 +197,12 @@ function FluxLandingHero({
                         animate="visible"
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <button className="h-12 px-8 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium transition-all hover:shadow-lg">
-                            {t('hero.cta.download')}
-                        </button>
-                        <button className="h-12 px-8 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground transition-colors">
-                            {t('hero.cta.features')}
-                        </button>
+                        <a href="#" className="h-12 px-8 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium transition-all hover:shadow-lg flex items-center justify-center">
+                            Start Automating Free
+                        </a>
+                        <a href="#pricing" className="h-12 px-8 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground transition-colors flex items-center justify-center">
+                            See Pricing
+                        </a>
                     </motion.div>
                 </div>
             </div>
