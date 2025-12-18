@@ -4,6 +4,7 @@ import { Check, Minus, MoveRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLocalizedPricing } from "@/hooks/useLocalizedPricing";
+import { Link } from "react-router-dom";
 
 function Pricing() {
     const { symbol, proPrice, agencyPrice, loading } = useLocalizedPricing();
@@ -45,9 +46,11 @@ function Pricing() {
                                 )}
                                 <span className="text-sm text-muted-foreground"> / lifetime</span>
                             </div>
-                            <Button variant="outline" className="w-full gap-2 mt-4">
-                                Get Solo <MoveRight className="w-4 h-4" />
-                            </Button>
+                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" className="w-full mt-4 block">
+                                <Button variant="outline" className="w-full gap-2">
+                                    Get Solo <MoveRight className="w-4 h-4" />
+                                </Button>
+                            </a>
                         </div>
 
                         {/* Agency Plan Header */}
@@ -70,9 +73,11 @@ function Pricing() {
                                 )}
                                 <span className="text-sm text-muted-foreground"> / lifetime</span>
                             </div>
-                            <Button className="w-full gap-2 mt-4 bg-blue-600 hover:bg-blue-500 text-white">
-                                Get Agency <MoveRight className="w-4 h-4" />
-                            </Button>
+                            <Link to="/contact-sales" className="w-full mt-4 block">
+                                <Button className="w-full gap-2 bg-blue-600 hover:bg-blue-500 text-white">
+                                    Get Agency <MoveRight className="w-4 h-4" />
+                                </Button>
+                            </Link>
                         </div>
 
                         {/* FEATURE SECTION 1: CORE */}
