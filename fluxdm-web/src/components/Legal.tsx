@@ -51,8 +51,8 @@ const Footer = () => {
                                 <span className="group-hover:text-foreground transition-colors">White Label (Agencies)</span>
                                 <span className="bg-blue-500/10 text-blue-500 text-[10px] px-1.5 py-0.5 rounded uppercase font-bold border border-blue-500/20">New</span>
                             </li>
-                            <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.about')}</a></li>
-                            <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.careers')}</a></li>
+                            <li><Link to="/mission" className="hover:text-foreground transition-colors">Our Mission</Link></li>
+                            <li><Link to="/careers" className="hover:text-foreground transition-colors">Careers</Link></li>
                         </ul>
                     </div>
 
@@ -71,9 +71,9 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <button onClick={() => openModal('data')} className="hover:text-red-500 transition-colors flex items-center gap-2">
+                                <Link to="/data-deletion" className="hover:text-red-500 transition-colors flex items-center gap-2">
                                     <Lock size={14} /> Data Deletion
-                                </button>
+                                </Link>
                             </li>
                         </ul>
                     </div>

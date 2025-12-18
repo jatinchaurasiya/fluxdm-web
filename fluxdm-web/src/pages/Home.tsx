@@ -1,6 +1,7 @@
 import { DeepDiveFeatures } from "@/components/DeepDiveFeatures";
 import TransformationSection from "@/components/TransformationSection";
 import Testimonials from "@/components/Testimonials";
+import { PricingSection } from "@/components/PricingSection";
 import Footer from "@/components/Legal";
 import { FadeIn } from "@/components/ui/fade-in";
 import Navbar from "@/components/Navbar";
@@ -23,17 +24,28 @@ const Home = () => {
             <HeroVideo />
 
             <div className="space-y-12 pb-0">
-                <FadeIn delay={0.2}>
-                    <TransformationSection />
-                </FadeIn>
+                <section id="roi">
+                    <FadeIn delay={0.2}>
+                        <TransformationSection />
+                    </FadeIn>
+                </section>
 
-                <FadeIn delay={0.3}>
-                    <DeepDiveFeatures />
-                </FadeIn>
+                <section id="capabilities">
+                    <FadeIn delay={0.3}>
+                        <DeepDiveFeatures />
+                    </FadeIn>
+                </section>
 
-                <FadeIn delay={0.4}>
-                    <Testimonials />
-                </FadeIn>
+                <section id="creators">
+                    <FadeIn delay={0.4}>
+                        <Testimonials />
+                    </FadeIn>
+                </section>
+
+                {/* Pricing Placeholder for Scroll Link - Redirects if configured or just provides anchor opacity */}
+                <section id="pricing">
+                    <PricingSection />
+                </section>
             </div>
             <Footer />
         </AuroraBackground>

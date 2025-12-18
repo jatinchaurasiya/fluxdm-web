@@ -20,10 +20,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: t('nav.features'), href: '/#features' },
-        { name: t('nav.transformation'), href: '/#transformation' },
-        { name: t('nav.wallOfLove'), href: '/#testimonials' },
-        { name: t('pricing.title').split('.')[0], href: '/pricing' }, // Simple link
+        { name: "Capabilities", href: '/#capabilities' },
+        { name: "ROI", href: '/#roi' },
+        { name: "Creators", href: '/#creators' },
+        { name: "Pricing", href: '/pricing' },
     ];
 
     const changeLanguage = (lng: string) => {
@@ -99,7 +99,7 @@ const Navbar = () => {
                             </AnimatePresence>
                         </div>
 
-                        <button 
+                        <button
                             onClick={() => window.location.href = '/pricing'}
                             className="hidden md:flex bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 px-6 py-2.5 rounded-full text-sm font-bold transition-all items-center gap-2"
                         >
