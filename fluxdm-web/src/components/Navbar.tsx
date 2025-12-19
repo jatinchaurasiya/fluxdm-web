@@ -42,7 +42,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between w-full">
 
                     {/* Logo */}
-                    <div className="flex items-center gap-3 pl-4 cursor-pointer">
+                    <div className="flex items-center gap-3 pl-4 cursor-pointer hover:scale-105 transition-transform">
                         <img src={logo} alt="FluxDM Logo" className="h-6 w-auto" />
                         <span className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight hidden sm:block">FluxDM</span>
                     </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+                                className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors hover:scale-105 transform inline-block"
                             >
                                 {link.name}
                             </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
                         <div className="relative">
                             <button
                                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                                className="flex items-center gap-1.5 px-3 py-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-sm font-medium"
+                                className="flex items-center gap-1.5 px-3 py-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-sm font-medium hover:scale-105 active:scale-95"
                             >
                                 <Globe size={16} />
                                 <span className="uppercase">{i18n.language.split('-')[0]}</span>
@@ -101,7 +101,7 @@ const Navbar = () => {
 
                         <button
                             onClick={() => window.location.href = '/pricing'}
-                            className="hidden md:flex bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 px-6 py-2.5 rounded-full text-sm font-bold transition-all items-center gap-2"
+                            className="hidden md:flex bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 px-6 py-2.5 rounded-full text-sm font-bold transition-all items-center gap-2 hover:scale-105 active:scale-95 hover:shadow-xl shadow-lg"
                         >
                             {t('nav.getAccess')} <ArrowRight size={16} />
                         </button>
