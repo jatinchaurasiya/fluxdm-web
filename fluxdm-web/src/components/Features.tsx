@@ -26,9 +26,9 @@ export default function Features() {
                     {FEATURE_LIST.map((feature, idx) => (
                         <div
                             key={idx}
-                            className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all hover:bg-muted/50 hover:-translate-y-1"
+                            className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover:bg-muted/30 hover:-translate-y-2 hover:shadow-xl duration-300"
                         >
-                            <div className="w-12 h-12 mb-6 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <div className="w-12 h-12 mb-6 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                                 <feature.icon className="w-6 h-6 text-primary" />
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
