@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useSpring, useTransform, useInView, useMotionValue } from 'framer-motion';
-import { TrendingUp, MessageCircle, MousePointer2, User } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { motion, useSpring, useTransform, useInView } from 'framer-motion';
+import { TrendingUp, MessageCircle, MousePointer2 } from 'lucide-react';
 
 export const RoiStatsCard = () => {
     const containerRef = useRef(null);
