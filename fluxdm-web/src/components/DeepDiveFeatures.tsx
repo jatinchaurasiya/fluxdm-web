@@ -3,6 +3,7 @@ import { CheckCircle2, Zap, Moon, Layers } from 'lucide-react';
 import { FollowGateAnimation } from './ui/follow-gate-animation';
 import { RoiStatsCard } from './ui/roi-stats-card';
 import cashToCommentImg from '../assets/cashtocomment.png';
+import { useTranslation } from 'react-i18next';
 
 interface FeatureRowProps {
     title: string;
@@ -82,6 +83,7 @@ const BentoItem = ({ title, description, icon: Icon }: { title: string; descript
 );
 
 export const DeepDiveFeatures = () => {
+    const { t } = useTranslation();
 
     return (
         <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -89,9 +91,9 @@ export const DeepDiveFeatures = () => {
 
                 {/* Row 1: The Automation Engine */}
                 <FeatureRow
-                    title="Comment-to-Cash Engine"
-                    description="Automatically send links, discounts, or playbooks the moment someone comments. Capture leads while interest is at its peak."
-                    badge="Instantly Responsive"
+                    title={t('deepDive.row1.title')}
+                    description={t('deepDive.row1.desc')}
+                    badge={t('deepDive.row1.badge')}
                     visualComponent={
                         <img
                             src={cashToCommentImg}
@@ -103,18 +105,18 @@ export const DeepDiveFeatures = () => {
 
                 {/* Row 2: The Visual Scheduler */}
                 <FeatureRow
-                    title="Supercharge your growth"
-                    description="Unlock more brand deals and prove your worth. Our real-time analytics dashboards help you visualize every interaction."
-                    badge="Viral Growth"
+                    title={t('deepDive.row2.title')}
+                    description={t('deepDive.row2.desc')}
+                    badge={t('deepDive.row2.badge')}
                     isReversed
                     visualComponent={<RoiStatsCard />}
                 />
 
                 {/* Row 3: Privacy & CRM */}
                 <FeatureRow
-                    title="The 'Follow Gate' Growth Engine"
-                    description="Stop giving value away for free. Automatically gate your files, links, and guides behind a 'Follow' action to skyrocket your audience growth."
-                    badge="Growth Hack"
+                    title={t('deepDive.row3.title')}
+                    description={t('deepDive.row3.desc')}
+                    badge={t('deepDive.row3.badge')}
                     visualComponent={<FollowGateAnimation />}
                 />
 
@@ -126,29 +128,29 @@ export const DeepDiveFeatures = () => {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl font-bold text-foreground mb-4">Built for Power Users</h2>
-                        <p className="text-muted-foreground">Everything you need to scale your automation empire.</p>
+                        <h2 className="text-3xl font-bold text-foreground mb-4">{t('deepDive.bento.headline')}</h2>
+                        <p className="text-muted-foreground">{t('deepDive.bento.subheadline')}</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <BentoItem
-                            title="Unlimited Accounts"
-                            description="Scale 1 or 100 pages. No extra cost."
+                            title={t('deepDive.bento.unlimited.title')}
+                            description={t('deepDive.bento.unlimited.desc')}
                             icon={CheckCircle2}
                         />
                         <BentoItem
-                            title="Human Emulation"
-                            description="Variable typing delays to behave exactly like a human."
+                            title={t('deepDive.bento.human.title')}
+                            description={t('deepDive.bento.human.desc')}
                             icon={Zap}
                         />
                         <BentoItem
-                            title="Smart Link Delivery"
-                            description="Instantly send high-converting links and personalized images to turn every DM into a potential sale."
+                            title={t('deepDive.bento.smart.title')}
+                            description={t('deepDive.bento.smart.desc')}
                             icon={Layers}
                         />
                         <BentoItem
-                            title="Midnight Mode"
-                            description="Sleek, battery-saving dark UI."
+                            title={t('deepDive.bento.dark.title')}
+                            description={t('deepDive.bento.dark.desc')}
                             icon={Moon}
                         />
                     </div>

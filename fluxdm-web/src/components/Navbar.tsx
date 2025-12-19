@@ -20,10 +20,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: "Capabilities", href: '/#capabilities' },
-        { name: "ROI", href: '/#roi' },
-        { name: "Creators", href: '/#creators' },
-        { name: "Pricing", href: '/pricing' },
+        { name: t('nav.capabilities'), href: '/#capabilities' },
+        { name: t('nav.roi'), href: '/#roi' },
+        { name: t('nav.creators'), href: '/#creators' },
+        { name: t('nav.pricing'), href: '/pricing' },
     ];
 
     const changeLanguage = (lng: string) => {

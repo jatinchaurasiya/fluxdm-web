@@ -37,7 +37,7 @@ const Footer = () => {
                         <h4 className="text-foreground font-semibold mb-4">{t('footer.product')}</h4>
                         <ul className="space-y-3 text-sm text-zinc-500 dark:text-zinc-400">
                             <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.download')}</a></li>
-                            <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.features')}</a></li>
+                            <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.capabilities')}</a></li>
                             <li><a href="#" className="hover:text-foreground transition-colors">{t('footer.pricing')}</a></li>
                         </ul>
                     </div>
@@ -50,8 +50,8 @@ const Footer = () => {
                                 <span className="group-hover:text-foreground transition-colors">White Label (Agencies)</span>
                                 <span className="bg-blue-500/10 text-blue-500 text-[10px] px-1.5 py-0.5 rounded uppercase font-bold border border-blue-500/20">New</span>
                             </li>
-                            <li><Link to="/mission" className="hover:text-foreground transition-colors">Our Mission</Link></li>
-                            <li><Link to="/careers" className="hover:text-foreground transition-colors">Careers</Link></li>
+                            <li><Link to="/mission" className="hover:text-foreground transition-colors">{t('footer.about')}</Link></li>
+                            <li><Link to="/careers" className="hover:text-foreground transition-colors">{t('footer.careers')}</Link></li>
                         </ul>
                     </div>
 
@@ -61,12 +61,12 @@ const Footer = () => {
                         <ul className="space-y-3 text-sm text-zinc-500 dark:text-zinc-400">
                             <li>
                                 <Link to="/privacy-policy" className="hover:text-foreground hover:underline transition-colors flex items-center gap-2">
-                                    <Shield size={14} /> Privacy Policy
+                                    <Shield size={14} /> {t('footer.privacy')}
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/terms-of-service" className="hover:text-foreground hover:underline transition-colors flex items-center gap-2">
-                                    <FileText size={14} /> Terms of Service
+                                    <FileText size={14} /> {t('footer.terms')}
                                 </Link>
                             </li>
                             <li>

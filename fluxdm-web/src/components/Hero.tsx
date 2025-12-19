@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import Mockup from '../assets/dashboard-mockup.svg';
 import { Download, ShieldCheck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+    const { t } = useTranslation();
+
     return (
         <section className="relative pt-40 pb-20 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
@@ -28,9 +31,9 @@ export default function Hero() {
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-tight"
                 >
-                    The Instagram Growth Engine <br />
+                    {t('hero.titleLine1')} <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600">
-                        for Desktop.
+                        {t('hero.titleLine2')}
                     </span>
                 </motion.h1>
 
@@ -40,8 +43,7 @@ export default function Hero() {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="max-w-2xl text-lg md:text-xl text-slate-400 mb-12"
                 >
-                    Auto-reply to leads, schedule content, and manage DMs securely from your machine.
-                    No cloud servers. 100% Private.
+                    {t('hero.description')}
                 </motion.p>
 
                 <motion.div
@@ -52,11 +54,11 @@ export default function Hero() {
                 >
                     <button className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-500 transition-all shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_0_60px_-10px_rgba(37,99,235,0.6)] hover:scale-105 active:scale-95">
                         <Download className="w-5 h-5" />
-                        Download for Windows
+                        {t('hero.cta.download')}
                     </button>
                     <button className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-slate-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
                         <ShieldCheck className="w-5 h-5" />
-                        Safety Guarantee
+                        {t('hero.cta.safety')}
                     </button>
                 </motion.div>
 

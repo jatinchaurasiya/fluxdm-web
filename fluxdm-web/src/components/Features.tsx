@@ -1,24 +1,27 @@
 import { Zap, Calendar, ShieldCheck } from 'lucide-react';
-
-const FEATURE_LIST = [
-    {
-        icon: Zap,
-        title: "Smart Automation",
-        desc: "Trigger complex DM flows from comments. Convert engagement into sales automatically."
-    },
-    {
-        icon: Calendar,
-        title: "Visual Scheduler",
-        desc: "Drag, drop, and schedule Reels & Carousels for the entire month with a powerful visual editor."
-    },
-    {
-        icon: ShieldCheck,
-        title: "Local & Secure",
-        desc: "Your data stays on your PC. We never store your auth tokens or private messages."
-    }
-];
+import { useTranslation } from 'react-i18next';
 
 export default function Features() {
+    const { t } = useTranslation();
+
+    const FEATURE_LIST = [
+        {
+            icon: Zap,
+            title: t('featureGrid.automation.title'),
+            desc: t('featureGrid.automation.desc')
+        },
+        {
+            icon: Calendar,
+            title: t('featureGrid.scheduler.title'),
+            desc: t('featureGrid.scheduler.desc')
+        },
+        {
+            icon: ShieldCheck,
+            title: t('featureGrid.secure.title'),
+            desc: t('featureGrid.secure.desc')
+        }
+    ];
+
     return (
         <section id="features" className="py-32 px-6 bg-background relative">
             <div className="max-w-7xl mx-auto">

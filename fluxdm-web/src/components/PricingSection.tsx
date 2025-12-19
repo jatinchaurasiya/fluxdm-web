@@ -6,55 +6,42 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { BorderTrail } from '@/components/ui/border-trail';
 import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 
 export function PricingSection() {
+    const { t } = useTranslation();
+
     // Defines the plans
     const plans = [
         {
-            name: "Solo Creator",
+            name: t('pricing.plans.solo.name'),
             price: "$6.99",
-            period: "/month",
-            description: "Perfect for individual creators.",
-            features: [
-                'Unlimited Automation Flows',
-                'Smart Scheduling',
-                'Runs Locally on 1 Device',
-                'Standard Support'
-            ],
-            buttonText: "Get Started",
+            period: t('pricing.plans.solo.period'),
+            description: t('pricing.plans.solo.description'),
+            features: t('pricing.plans.solo.features', { returnObjects: true }) as string[],
+            buttonText: t('pricing.plans.solo.cta'),
             href: "https://test.dodopayments.com/buy/",
             isExternal: true,
             highlight: false
         },
         {
-            name: "Agency",
+            name: t('pricing.plans.agency.name'),
             price: "$79.99",
-            period: "/month",
-            description: "For scaling teams and agencies.",
-            features: [
-                'Everything in Solo',
-                'Unlimited Client Accounts',
-                'Team Collaboration Tools',
-                'Priority Support'
-            ],
-            buttonText: "Get Started",
+            period: t('pricing.plans.agency.period'),
+            description: t('pricing.plans.agency.description'),
+            features: t('pricing.plans.agency.features', { returnObjects: true }) as string[],
+            buttonText: t('pricing.plans.agency.cta'),
             href: "https://test.dodopayments.com/buy/",
             isExternal: true,
             highlight: true
         },
         {
-            name: "White Label",
-            price: "Contact Sales",
+            name: t('pricing.plans.whiteLabel.name'),
+            price: t('pricing.plans.whiteLabel.price'),
             period: "",
-            description: "Full rebranding and custom domain support.",
-            features: [
-                'Everything in Agency',
-                'Remove FluxDM Branding',
-                'Custom Domain & SSL',
-                'Dedicated Account Manager',
-                'Commercial Resell Rights'
-            ],
-            buttonText: "Contact Sales",
+            description: t('pricing.plans.whiteLabel.description'),
+            features: t('pricing.plans.whiteLabel.features', { returnObjects: true }) as string[],
+            buttonText: t('pricing.plans.whiteLabel.cta'),
             href: "/contact-sales",
             isExternal: false,
             highlight: false
@@ -74,13 +61,13 @@ export function PricingSection() {
                     className="mx-auto max-w-xl space-y-5 text-center"
                 >
                     <Badge variant="outline" className="border-blue-500/50 text-blue-400 uppercase tracking-widest">
-                        Simple Pricing
+                        {t('pricing.badge')}
                     </Badge>
                     <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">
-                        Pay Once. <span className="text-blue-500">Own Forever.</span>
+                        <Trans i18nKey="pricing.title" components={{ 1: <span className="text-blue-500" /> }} />
                     </h2>
                     <p className="text-zinc-400 text-lg">
-                        Transparent pricing for everyone. No hidden fees.
+                        {t('pricing.subtitle')}
                     </p>
                 </motion.div>
 
@@ -131,7 +118,7 @@ export function PricingSection() {
                                 </div>
 
                                 <div className="flex items-baseline gap-1 mb-6">
-                                    <span className={cn("text-4xl font-extrabold text-foreground", plan.price === "Contact Sales" && "text-3xl")}>
+                                    <span className={cn("text-4xl font-extrabold text-foreground", plan.price === t('pricing.plans.whiteLabel.price') && "text-3xl")}>
                                         {plan.price}
                                     </span>
                                     {plan.period && (
