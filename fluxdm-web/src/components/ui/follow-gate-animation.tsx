@@ -218,8 +218,8 @@ export const FollowGateAnimation = () => {
                                                 <FileText size={20} className="text-red-500" />
                                             </div>
                                             <div className="flex flex-col min-w-0">
-                                                <span className="text-[13px] font-bold text-gray-900 truncate">Growth_Hacks.pdf</span>
-                                                <span className="text-[11px] text-gray-400">PDF Document • 2.4 MB</span>
+                                                <span className="text-[13px] font-bold text-gray-900 truncate">{t('followGate.cards.fileName')}</span>
+                                                <span className="text-[11px] text-gray-400">{t('followGate.cards.fileDetails')}</span>
                                             </div>
                                         </div>
                                     </div>
