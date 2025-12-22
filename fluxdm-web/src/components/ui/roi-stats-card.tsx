@@ -3,6 +3,23 @@ import { motion, useSpring, useTransform, useInView } from 'framer-motion';
 import { TrendingUp, MessageCircle, MousePointer2 } from 'lucide-react';
 
 export const RoiStatsCard = () => {
+    // Simple animated SVG Sparkline
+    const MiniSparkline = ({ color = "#16a34a", delay = 0 }) => {
+        return (
+            <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
+                <motion.path
+                    d="M1 18 C 10 18, 10 4, 18 8 S 28 15, 38 2"
+                    stroke={color}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, delay: delay, ease: "easeInOut" }}
+                />
+            </svg>
+        );
+    };
+
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
@@ -94,9 +111,9 @@ export const RoiStatsCard = () => {
                                 <div className="text-xs text-gray-500 font-medium">Comments</div>
                                 <div className="flex items-center gap-2">
                                     <span className="font-bold text-gray-900">2.5K</span>
-                                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
-                                        <TrendingUp size={10} />
-                                        23%
+                                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full flex items-center gap-1.5 min-w-[70px] justify-center">
+                                        <MiniSparkline delay={1} />
+                                        <span>23%</span>
                                     </span>
                                 </div>
                             </div>
@@ -122,9 +139,9 @@ export const RoiStatsCard = () => {
                                 <div className="text-xs text-gray-500 font-medium">Link Clicks</div>
                                 <div className="flex items-center gap-2">
                                     <span className="font-bold text-gray-900">1.1K</span>
-                                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
-                                        <TrendingUp size={10} />
-                                        70%
+                                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full flex items-center gap-1.5 min-w-[70px] justify-center">
+                                        <MiniSparkline delay={1.5} />
+                                        <span>70%</span>
                                     </span>
                                 </div>
                             </div>

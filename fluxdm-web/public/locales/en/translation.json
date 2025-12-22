@@ -172,5 +172,42 @@
         "badge": "Verified Results",
         "headline": "The Secret Weapon of Top 1%",
         "subheadline": "How smart creators are escaping the time-for-money trap."
+    },
+    "scheduling": {
+        "badge": "Streamline Your Workflow",
+        "headline": "Schedule Content & Attach Automations in One Click.",
+        "description": "Don't just plan posts; plan your entire growth strategy. Visually map out your month on our calendar and attach any pre-built automation flow (like a 'Comment-to-DM' trigger) directly to your scheduled content. Set it once, and watch it work.",
+        "features": [
+            "Visual Drag-and-Drop Calendar",
+            "Attach existing Automation Flows",
+            "Track upcoming & published posts"
+        ],
+        "mockup": {
+            "breadcrumbs": "Dashboard / Calendar",
+            "schedule": "Schedule",
+            "queue": "Queue",
+            "postsReady": "Posts ready",
+            "draggables": "Draggables",
+            "recentAutomations": "Recent Automations",
+            "tip": "Proto-Tip: Drag cards to calendar to auto-attach flows."
+        }
+    },
+    "followGate": {
+        "ui": {
+            "follow": "Follow",
+            "following": "Following",
+            "messagePlaceholder": "Message...",
+            "time": "Today 9:41 AM",
+            "followers": "followers"
+        },
+        "messages": {
+            "userRequest": "Get Free Guide",
+            "lockTitle": "Followers Only",
+            "lockBody": "This guide is locked! 🔒",
+            "lockFooterPre": "Hit",
+            "lockFooterPost": "to unlock instantly.",
+            "unlockTitle": "Unlocked!",
+            "unlockBody": "Here is your free guide:"
+        }
     }
 }

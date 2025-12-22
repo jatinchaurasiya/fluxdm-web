@@ -7,7 +7,7 @@ const TransformationSection = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="transformation" className="py-12 relative overflow-hidden transition-colors duration-300">
+        <section id="transformation" className="py-12 sm:py-20 relative overflow-hidden transition-colors duration-300">
             <div className="container mx-auto px-4 max-w-6xl">
                 {/* Headline */}
                 <div className="text-center mb-16 space-y-4">

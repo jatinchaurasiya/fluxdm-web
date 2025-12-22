@@ -95,6 +95,43 @@
         "subheadline": "Veja como os principais criadores usam FluxDM para hackear o algoritmo e automatizar sua receita.",
         "badge": "Resultados Reais de Criadores"
     },
+    "scheduling": {
+        "badge": "Otimize Seu Fluxo de Trabalho",
+        "headline": "Agende Conteúdo e Anexe Automações com Um Clique.",
+        "description": "Não planeje apenas postagens; planeje toda a sua estratégia de crescimento. Mapeie visualmente seu mês em nosso calendário e anexe qualquer fluxo de automação pré-construído (como um gatilho 'Comentário-para-DM') diretamente ao seu conteúdo agendado. Configure uma vez e veja funcionar.",
+        "features": [
+            "Calendário Visual de Arrastar e Soltar",
+            "Anexar fluxos de automação existentes",
+            "Rastrear postagens futuras e publicadas"
+        ],
+        "mockup": {
+            "breadcrumbs": "Painel / Calendário",
+            "schedule": "Agendar",
+            "queue": "Fila",
+            "postsReady": "Posts prontos",
+            "draggables": "Arrastáveis",
+            "recentAutomations": "Automações Recentes",
+            "tip": "Proto-Dica: Arraste cartões para o calendário para anexar fluxos automaticamente."
+        }
+    },
+    "followGate": {
+        "ui": {
+            "follow": "Seguir",
+            "following": "Seguindo",
+            "messagePlaceholder": "Mensagem...",
+            "time": "Hoje 09:41",
+            "followers": "seguidores"
+        },
+        "messages": {
+            "userRequest": "Obter Guia Grátis",
+            "lockTitle": "Apenas Seguidores",
+            "lockBody": "Este guia está bloqueado! 🔒",
+            "lockFooterPre": "Toque em",
+            "lockFooterPost": "para desbloquear instantaneamente.",
+            "unlockTitle": "Desbloqueado!",
+            "unlockBody": "Aqui está seu guia grátis:"
+        }
+    },
     "footer": {
         "tagline": "A única ferramenta de automação desktop-first para criadores do Instagram.",
         "product": "Produto",

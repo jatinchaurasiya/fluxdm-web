@@ -95,6 +95,43 @@
         "subheadline": "Sieh dir an, wie Top-Creator FluxDM nutzen, um den Algorithmus zu hacken und ihre Einnahmen zu automatisieren.",
         "badge": "Echte Creator-Ergebnisse"
     },
+    "scheduling": {
+        "badge": "Optimiere deinen Workflow",
+        "headline": "Inhalte planen & Automatisierungen mit einem Klick anhängen.",
+        "description": "Plane nicht nur Beiträge; plane deine gesamte Wachstumsstrategie. Bilde deinen Monat visuell auf unserem Kalender ab und hänge jeden vorgefertigten Automatisierungs-Flow (wie einen 'Kommentar-zu-DM'-Auslöser) direkt an deinen geplanten Inhalt an. Einmal einrichten und zusehen, wie es funktioniert.",
+        "features": [
+            "Visueller Drag-and-Drop-Kalender",
+            "Vorhandene Automatisierungs-Flows anhängen",
+            "Kommende & veröffentlichte Beiträge verfolgen"
+        ],
+        "mockup": {
+            "breadcrumbs": "Dashboard / Kalender",
+            "schedule": "Planen",
+            "queue": "Warteschlange",
+            "postsReady": "Beiträge bereit",
+            "draggables": "Ziehbare Elemente",
+            "recentAutomations": "Letzte Automatisierungen",
+            "tip": "Proto-Tipp: Ziehe Karten auf den Kalender, um Flows automatisch anzuhängen."
+        }
+    },
+    "followGate": {
+        "ui": {
+            "follow": "Folgen",
+            "following": "Folge ich",
+            "messagePlaceholder": "Nachricht...",
+            "time": "Heute 09:41",
+            "followers": "Follower"
+        },
+        "messages": {
+            "userRequest": "Kostenlosen Guide erhalten",
+            "lockTitle": "Nur für Follower",
+            "lockBody": "Dieser Guide ist gesperrt! 🔒",
+            "lockFooterPre": "Drücke",
+            "lockFooterPost": "um sofort freizuschalten.",
+            "unlockTitle": "Freigeschaltet!",
+            "unlockBody": "Hier ist dein kostenloser Guide:"
+        }
+    },
     "footer": {
         "tagline": "Das einzige Desktop-First-Automatisierungstool für Instagram-Creator.",
         "product": "Produkt",

@@ -95,6 +95,43 @@
         "subheadline": "Mira cómo los mejores creadores usan FluxDM para hackear el algoritmo y automatizar sus ingresos.",
         "badge": "Resultados Reales de Creadores"
     },
+    "scheduling": {
+        "badge": "Optimiza Tu Flujo de Trabajo",
+        "headline": "Programa Contenido y Adjunta Automatizaciones con Un Clic.",
+        "description": "No solo planifiques publicaciones; planifica toda tu estrategia de crecimiento. Mapea visualmente tu mes en nuestro calendario y adjunta cualquier flujo de automatización preconstruido (como un disparador 'Comentario-a-DM') directamente a tu contenido programado. Configúralo una vez y mira cómo funciona.",
+        "features": [
+            "Calendario Visual de Arrastrar y Soltar",
+            "Adjuntar Flujos de Automatización existentes",
+            "Rastrear publicaciones próximas y publicadas"
+        ],
+        "mockup": {
+            "breadcrumbs": "Panel / Calendario",
+            "schedule": "Programar",
+            "queue": "Cola",
+            "postsReady": "Posts listos",
+            "draggables": "Arrastrables",
+            "recentAutomations": "Automatizaciones Recientes",
+            "tip": "Proto-Tip: Arrastra tarjetas al calendario para adjuntar flujos automáticamente."
+        }
+    },
+    "followGate": {
+        "ui": {
+            "follow": "Seguir",
+            "following": "Siguiendo",
+            "messagePlaceholder": "Mensaje...",
+            "time": "Hoy 9:41 AM",
+            "followers": "seguidores"
+        },
+        "messages": {
+            "userRequest": "Obtener Guía Gratis",
+            "lockTitle": "Solo Seguidores",
+            "lockBody": "¡Esta guía está bloqueada! 🔒",
+            "lockFooterPre": "Presiona",
+            "lockFooterPost": "para desbloquear instantáneamente.",
+            "unlockTitle": "¡Desbloqueado!",
+            "unlockBody": "Aquí está tu guía gratis:"
+        }
+    },
     "footer": {
         "tagline": "La única herramienta de automatización primero para escritorio para creadores de Instagram.",
         "product": "Producto",

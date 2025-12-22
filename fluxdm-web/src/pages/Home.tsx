@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import { FluxLandingHero } from "@/components/ui/flux-landing-hero";
 import { HeroVideo } from "@/components/HeroVideo";
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import ContentSchedulingSection from "@/components/ContentSchedulingSection";
 
 const Home = () => {
 
@@ -17,7 +18,7 @@ const Home = () => {
             <FluxLandingHero />
             <HeroVideo />
 
-            <div className="space-y-12 pb-0">
+            <div className="space-y-0 pb-0">
                 <section id="roi">
                     <FadeIn delay={0.2}>
                         <TransformationSection />
@@ -27,6 +28,12 @@ const Home = () => {
                 <section id="capabilities">
                     <FadeIn delay={0.3}>
                         <DeepDiveFeatures />
+                    </FadeIn>
+                </section>
+
+                <section id="scheduling">
+                    <FadeIn delay={0.35}>
+                        <ContentSchedulingSection />
                     </FadeIn>
                 </section>
 

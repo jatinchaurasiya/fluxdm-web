@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle2, Zap, Moon, Layers } from 'lucide-react';
+
 import { FollowGateAnimation } from './ui/follow-gate-animation';
 import { RoiStatsCard } from './ui/roi-stats-card';
 import cashToCommentImg from '../assets/cashtocomment.png';
@@ -16,7 +16,7 @@ interface FeatureRowProps {
 
 const FeatureRow = ({ title, description, badge, isReversed = false, visualComponent }: FeatureRowProps) => {
     return (
-        <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24 py-16 lg:py-24`}>
+        <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24 py-12 lg:py-20`}>
             {/* Text Content */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -66,27 +66,11 @@ const FeatureRow = ({ title, description, badge, isReversed = false, visualCompo
     );
 };
 
-const BentoItem = ({ title, description, icon: Icon }: { title: string; description: string; icon: any }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 group"
-    >
-        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
-            <Icon size={20} />
-        </div>
-        <h3 className="text-xl font-semibold text-card-foreground mb-2">{title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
-    </motion.div>
-);
-
 export const DeepDiveFeatures = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section id="features" className="py-12 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
 
                 {/* Row 1: The Automation Engine */}
@@ -120,41 +104,7 @@ export const DeepDiveFeatures = () => {
                     visualComponent={<FollowGateAnimation />}
                 />
 
-                {/* Bento Grid */}
-                <div className="mt-16">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-3xl font-bold text-foreground mb-4">{t('deepDive.bento.headline')}</h2>
-                        <p className="text-muted-foreground">{t('deepDive.bento.subheadline')}</p>
-                    </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <BentoItem
-                            title={t('deepDive.bento.unlimited.title')}
-                            description={t('deepDive.bento.unlimited.desc')}
-                            icon={CheckCircle2}
-                        />
-                        <BentoItem
-                            title={t('deepDive.bento.human.title')}
-                            description={t('deepDive.bento.human.desc')}
-                            icon={Zap}
-                        />
-                        <BentoItem
-                            title={t('deepDive.bento.smart.title')}
-                            description={t('deepDive.bento.smart.desc')}
-                            icon={Layers}
-                        />
-                        <BentoItem
-                            title={t('deepDive.bento.dark.title')}
-                            description={t('deepDive.bento.dark.desc')}
-                            icon={Moon}
-                        />
-                    </div>
-                </div>
 
             </div>
         </section>
