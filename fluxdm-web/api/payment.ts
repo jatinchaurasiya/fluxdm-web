@@ -22,17 +22,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
 
         const session = await client.checkoutSessions.create({
-            billing_address: {
-                city: 'San Francisco',
-                country: 'US',
-                state: 'CA',
-                street: '123 Market St',
-                zipcode: '94105'
-            },
-            customer: {
-                email: 'customer@example.com',
-                name: 'FluxDM Customer'
-            },
             product_cart: [
                 {
                     product_id: productId,
