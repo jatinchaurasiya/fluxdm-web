@@ -9,12 +9,16 @@ import { BorderTrail } from '@/components/ui/border-trail';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 
+import { trackBeginCheckout } from '@/lib/analytics';
+
 export function PricingSection() {
     const { t } = useTranslation();
     const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
 
     const handleBuy = async (productId: string) => {
         setLoadingPlan(productId);
+        trackBeginCheckout(productId); // Fire GA Event
+
         try {
             // In a real Next.js app, this hits the API route.
             // Since this is a Vite app, this request might 404 unless a backend proxy or serverless function is set up.

@@ -10,10 +10,31 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import ContentSchedulingSection from "@/components/ContentSchedulingSection";
 
+import { SEO } from "@/lib/seo";
+
 const Home = () => {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FluxDM",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Cloud",
+        "offers": {
+            "@type": "Offer",
+            "price": "6.99",
+            "priceCurrency": "USD"
+        },
+        "description": "Turn Instagram Comments into Revenue. On Autopilot. FluxDM automates your DM marketing."
+    };
 
     return (
         <AuroraBackground className="min-h-screen selection:bg-blue-500/30">
+            <SEO
+                title="FluxDM - Instagram Comment Automation Tool"
+                description="Turn Instagram Comments into Revenue on Autopilot. FluxDM helps creators and agencies automate DM replies, grow engagement, and increase sales."
+                canonical="https://fluxdm.space/"
+                schema={jsonLd}
+            />
             <Navbar />
             <FluxLandingHero />
             <HeroVideo />
