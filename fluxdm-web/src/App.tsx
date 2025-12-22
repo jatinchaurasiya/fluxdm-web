@@ -9,9 +9,29 @@ import Careers from "@/pages/Careers";
 import DataDeletion from "@/pages/DataDeletion";
 import './i18n';
 
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { initGA, trackPageView } from '@/lib/analytics';
+
+// Component to track page views on route change
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+};
+
 function App() {
+  useEffect(() => {
+    initGA();
+  }, []);
+
   return (
     <BrowserRouter>
+      <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
