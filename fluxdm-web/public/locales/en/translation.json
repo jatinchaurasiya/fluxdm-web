@@ -1,4 +1,7 @@
 {
+    "common": {
+        "close": "Close"
+    },
     "hero": {
         "badge": "Desktop App v1.0",
         "titleLine1": "The Instagram Growth Engine",
@@ -105,6 +108,69 @@
             }
         }
     },
+    "comparison": {
+        "badge": "Compare Plans",
+        "headline": "Choose the right plan for you",
+        "subheadline": "Whether you are a solo creator or scaling an agency, we have a deal for you.",
+        "bestValue": "Best Value",
+        "plans": {
+            "solo": {
+                "name": "Solo Creator",
+                "desc": "For individual creators building their brand.",
+                "price": "$6.99",
+                "cta": "Get Solo",
+                "features": {
+                    "automation": "Solo: Unlimited Automation",
+                    "scheduling": "Solo: Smart Scheduling",
+                    "clientManagement": "Solo: Client Management",
+                    "prioritySupport": "Solo: Priority Support",
+                    "removeBranding": "Solo: Remove Branding",
+                    "customDomain": "Solo: Custom Domain"
+                }
+            },
+            "agency": {
+                "name": "Agency",
+                "desc": "For businesses scaling multiple clients.",
+                "price": "$79.99",
+                "cta": "Get Agency",
+                "features": {
+                    "automation": "Agency: Unlimited Automation",
+                    "scheduling": "Agency: Smart Scheduling",
+                    "clientManagement": "Agency: Client Management",
+                    "prioritySupport": "Agency: Priority Support",
+                    "removeBranding": "Agency: Remove Branding",
+                    "customDomain": "Agency: Custom Domain"
+                }
+            },
+            "whiteLabel": {
+                "name": "White Label",
+                "desc": "Full rebranding and custom domain.",
+                "price": "Contact Sales",
+                "cta": "Contact Sales",
+                "features": {
+                    "automation": "White Label: Unlimited Automation",
+                    "scheduling": "White Label: Smart Scheduling",
+                    "clientManagement": "White Label: Client Management",
+                    "prioritySupport": "White Label: Priority Support",
+                    "removeBranding": "White Label: Remove Branding",
+                    "customDomain": "White Label: Custom Domain"
+                }
+            }
+        },
+        "sections": {
+            "core": "Core Features",
+            "agency": "Agency & Growth",
+            "enterprise": "Enterprise / White Label"
+        },
+        "features": {
+            "unlimitedAutomation": "Unlimited Automation Flows",
+            "smartScheduling": "Smart Scheduling",
+            "clientManagement": "Client Management Dashboard",
+            "prioritySupport": "Priority Support",
+            "removeBranding": "Remove Branding",
+            "customDomain": "Custom Domain & SSL"
+        }
+    },
     "pricing": {
         "badge": "Simple Pricing",
         "title": "Pay Once. <1>Own Forever.</1>",
@@ -190,6 +256,27 @@
             "draggables": "Draggables",
             "recentAutomations": "Recent Automations",
             "tip": "Proto-Tip: Drag cards to calendar to auto-attach flows."
+        },
+        "calendar": {
+            "month": "December 2025",
+            "days": [
+                "S",
+                "M",
+                "T",
+                "W",
+                "T",
+                "F",
+                "S"
+            ],
+            "events": {
+                "launch": "🚀 Launch",
+                "story": "✨ Story",
+                "blackFriday": "Black Friday",
+                "reel": "👋 Reel",
+                "welcomeMsg": "Welcome Msg",
+                "triggerDeal": "Trigger: \"DEAL\"",
+                "triggerFollow": "Trigger: Follow"
+            }
         }
     },
     "followGate": {
@@ -208,6 +295,10 @@
             "lockFooterPost": "to unlock instantly.",
             "unlockTitle": "Unlocked!",
             "unlockBody": "Here is your free guide:"
+        },
+        "cards": {
+            "fileName": "Growth_Hacks.pdf",
+            "fileDetails": "PDF Document • 2.4 MB"
         }
     }
 }

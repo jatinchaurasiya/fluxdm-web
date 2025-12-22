@@ -65,7 +65,7 @@ const ContentSchedulingSection = () => {
                                 {/* Calendar Grid Area */}
                                 <div className="flex-1 p-4 sm:p-6 bg-white overflow-y-auto overflow-x-hidden">
                                     <div className="flex items-center justify-between mb-6">
-                                        <h3 className="font-semibold text-gray-900">December 2025</h3>
+                                        <h3 className="font-semibold text-gray-900">{t('scheduling.calendar.month')}</h3>
                                         <div className="flex gap-2">
                                             <button className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 transition-colors">{'<'}</button>
                                             <button className="p-1.5 rounded-md hover:bg-gray-100 text-gray-600 transition-colors">{'>'}</button>
@@ -75,7 +75,7 @@ const ContentSchedulingSection = () => {
                                     {/* Calendar Grid */}
                                     <div className="grid grid-cols-7 gap-px bg-gray-100 rounded-lg overflow-hidden border border-gray-200 shadow-inner">
                                         {/* Days Header */}
-                                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day) => (
+                                        {(t('scheduling.calendar.days', { returnObjects: true }) as string[]).map((day) => (
                                             <div key={day} className="bg-gray-50/50 py-2 text-center text-[10px] sm:text-xs font-semibold text-gray-500">
                                                 {day}
                                             </div>
@@ -90,12 +90,12 @@ const ContentSchedulingSection = () => {
                                                 {i + 1}
                                                 {i === 4 && (
                                                     <div className="mt-1 sm:mt-2 w-full bg-blue-50 text-[8px] sm:text-[10px] text-blue-600 px-1 py-0.5 rounded border border-blue-100 truncate shadow-sm">
-                                                        🚀 Launch
+                                                        {t('scheduling.calendar.events.launch')}
                                                     </div>
                                                 )}
                                                 {i === 8 && (
                                                     <div className="mt-1 sm:mt-2 w-full bg-purple-50 text-[8px] sm:text-[10px] text-purple-600 px-1 py-0.5 rounded border border-purple-100 truncate shadow-sm">
-                                                        ✨ Story
+                                                        {t('scheduling.calendar.events.story')}
                                                     </div>
                                                 )}
                                             </div>
@@ -106,7 +106,7 @@ const ContentSchedulingSection = () => {
                                             <span className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-blue-600 text-white shadow-md shadow-blue-500/20">14</span>
                                             <div className="mt-1 sm:mt-2 w-full bg-zinc-800 text-[8px] sm:text-[10px] text-white px-1.5 py-1 rounded shadow-md flex items-center gap-1 transform transition-transform hover:scale-105 cursor-pointer">
                                                 <Zap className="h-2.5 w-2.5 text-yellow-400" />
-                                                <span className="truncate">Black Friday</span>
+                                                <span className="truncate">{t('scheduling.calendar.events.blackFriday')}</span>
                                             </div>
                                         </div>
 
@@ -116,7 +116,7 @@ const ContentSchedulingSection = () => {
                                                 {i + 15}
                                                 {i === 3 && (
                                                     <div className="mt-1 sm:mt-2 w-full bg-orange-50 text-[8px] sm:text-[10px] text-orange-600 px-1 py-0.5 rounded border border-orange-100 truncate shadow-sm">
-                                                        👋 Reel
+                                                        {t('scheduling.calendar.events.reel')}
                                                     </div>
                                                 )}
                                             </div>
@@ -153,8 +153,8 @@ const ContentSchedulingSection = () => {
                                                     <Zap className="h-4 w-4" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-xs font-semibold text-gray-900 truncate">Black Friday</p>
-                                                    <p className="text-[9px] text-gray-500 truncate">Trigger: "DEAL"</p>
+                                                    <p className="text-xs font-semibold text-gray-900 truncate">{t('scheduling.calendar.events.blackFriday')}</p>
+                                                    <p className="text-[9px] text-gray-500 truncate">{t('scheduling.calendar.events.triggerDeal')}</p>
                                                 </div>
                                             </div>
 
@@ -163,8 +163,8 @@ const ContentSchedulingSection = () => {
                                                     <MessageCircle className="h-4 w-4" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-xs font-semibold text-gray-900 truncate">Welcome Msg</p>
-                                                    <p className="text-[9px] text-gray-500 truncate">Trigger: Follow</p>
+                                                    <p className="text-xs font-semibold text-gray-900 truncate">{t('scheduling.calendar.events.welcomeMsg')}</p>
+                                                    <p className="text-[9px] text-gray-500 truncate">{t('scheduling.calendar.events.triggerFollow')}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,5 +1,6 @@
 'use client';
-import { PlusIcon, ShieldCheckIcon, Check, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { PlusIcon, ShieldCheckIcon, Check, ArrowRight, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,31 @@ import { useTranslation, Trans } from 'react-i18next';
 
 export function PricingSection() {
     const { t } = useTranslation();
+    const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+    const handleBuy = async (productId: string) => {
+        setLoadingPlan(productId);
+        try {
+            // In a real Next.js app, this hits the API route.
+            // Since this is a Vite app, this request might 404 unless a backend proxy or serverless function is set up.
+            // We assume the user has a way to serve /api/payment or will set it up.
+            const response = await fetch('/api/payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ productId }),
+            });
+            const data = await response.json();
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                console.error('No URL returned', data);
+            }
+        } catch (error) {
+            console.error('Payment Error:', error);
+        } finally {
+            setLoadingPlan(null);
+        }
+    };
 
     // Defines the plans
     const plans = [
@@ -20,7 +46,7 @@ export function PricingSection() {
             description: t('pricing.plans.solo.description'),
             features: t('pricing.plans.solo.features', { returnObjects: true }) as string[],
             buttonText: t('pricing.plans.solo.cta'),
-            href: "https://test.dodopayments.com/buy/",
+            productId: 'pdt_0NUcmVldypcb2Ym5iv62S',
             isExternal: true,
             highlight: false
         },
@@ -31,7 +57,7 @@ export function PricingSection() {
             description: t('pricing.plans.agency.description'),
             features: t('pricing.plans.agency.features', { returnObjects: true }) as string[],
             buttonText: t('pricing.plans.agency.cta'),
-            href: "https://test.dodopayments.com/buy/",
+            productId: 'pdt_0NUcmdWFFypk2Fnp9o0Wp',
             isExternal: true,
             highlight: true
         },
@@ -42,7 +68,7 @@ export function PricingSection() {
             description: t('pricing.plans.whiteLabel.description'),
             features: t('pricing.plans.whiteLabel.features', { returnObjects: true }) as string[],
             buttonText: t('pricing.plans.whiteLabel.cta'),
-            href: "/contact-sales",
+            productId: null, // Contact sales
             isExternal: false,
             highlight: false
         }
@@ -139,24 +165,30 @@ export function PricingSection() {
                                     ))}
                                 </ul>
 
-                                {plan.isExternal ? (
-                                    <a
-                                        href={plan.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full"
-                                    >
-                                        <Button className={cn(
+                                {plan.isExternal && plan.productId ? (
+                                    <Button
+                                        onClick={() => handleBuy(plan.productId!)}
+                                        disabled={loadingPlan === plan.productId}
+                                        className={cn(
                                             "w-full h-12 text-md font-semibold",
                                             plan.highlight
                                                 ? "bg-yellow-500 hover:bg-yellow-400 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)] border-none"
                                                 : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                                        )}>
-                                            {plan.buttonText} <ArrowRight className="ml-2 w-4 h-4" />
-                                        </Button>
-                                    </a>
+                                        )}
+                                    >
+                                        {loadingPlan === plan.productId ? (
+                                            <>
+                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                Processing...
+                                            </>
+                                        ) : (
+                                            <>
+                                                {plan.buttonText} <ArrowRight className="ml-2 w-4 h-4" />
+                                            </>
+                                        )}
+                                    </Button>
                                 ) : (
-                                    <Link to={plan.href} className="w-full">
+                                    <Link to="/contact-sales" className="w-full">
                                         <Button className={cn(
                                             "w-full h-12 text-md font-semibold",
                                             plan.highlight
