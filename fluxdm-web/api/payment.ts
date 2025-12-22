@@ -4,7 +4,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 // Initialize DodoPayments Client outside the handler (cold start optimization)
 const client = new DodoPayments({
     bearerToken: process.env.DODO_PAYMENTS_API_KEY as string,
-    environment: 'test_mode',
+    environment: 'live_mode',
 });
 
 // Vercel Serverless Function (Node.js Runtime)
