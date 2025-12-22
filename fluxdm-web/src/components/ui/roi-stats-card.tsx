@@ -2,23 +2,24 @@ import { useEffect, useRef } from 'react';
 import { motion, useSpring, useTransform, useInView } from 'framer-motion';
 import { TrendingUp, MessageCircle, MousePointer2 } from 'lucide-react';
 
+// Simple animated SVG Sparkline
+const MiniSparkline = ({ color = "#16a34a", delay = 0 }) => {
+    return (
+        <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
+            <motion.path
+                d="M1 18 C 10 18, 10 4, 18 8 S 28 15, 38 2"
+                stroke={color}
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: delay, ease: "easeInOut" }}
+            />
+        </svg>
+    );
+};
+
 export const RoiStatsCard = () => {
-    // Simple animated SVG Sparkline
-    const MiniSparkline = ({ color = "#16a34a", delay = 0 }) => {
-        return (
-            <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
-                <motion.path
-                    d="M1 18 C 10 18, 10 4, 18 8 S 28 15, 38 2"
-                    stroke={color}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: delay, ease: "easeInOut" }}
-                />
-            </svg>
-        );
-    };
 
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-100px" });

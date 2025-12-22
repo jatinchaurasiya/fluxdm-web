@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import logo from '../assets/logo.png';
 
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
     const { t, i18n } = useTranslation();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -42,10 +44,10 @@ const Navbar = () => {
                 <div className="flex items-center justify-between w-full">
 
                     {/* Logo */}
-                    <div className="flex items-center gap-3 pl-4 cursor-pointer hover:scale-105 transition-transform">
+                    <Link to="/" className="flex items-center gap-3 pl-4 cursor-pointer hover:scale-105 transition-transform">
                         <img src={logo} alt="FluxDM Logo" className="h-6 w-auto" />
                         <span className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight hidden sm:block">FluxDM</span>
-                    </div>
+                    </Link>
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-8 bg-transparent">
