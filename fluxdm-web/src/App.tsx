@@ -7,11 +7,14 @@ import ContactSales from "@/pages/ContactSales";
 import Mission from "@/pages/Mission";
 import Careers from "@/pages/Careers";
 import DataDeletion from "@/pages/DataDeletion";
+import Affiliates from "@/pages/Affiliates";
 import './i18n';
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { initGA, trackPageView } from '@/lib/analytics';
+
+import { PaymentTracker } from '@/components/PaymentTracker';
 
 // Component to track page views on route change
 const AnalyticsTracker = () => {
@@ -32,9 +35,11 @@ function App() {
   return (
     <BrowserRouter>
       <AnalyticsTracker />
+      <PaymentTracker />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/affiliates" element={<Affiliates />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/contact-sales" element={<ContactSales />} />
