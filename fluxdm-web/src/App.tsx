@@ -17,6 +17,7 @@ import { useLocation } from 'react-router-dom';
 import { initGA, trackPageView } from '@/lib/analytics';
 
 import { PaymentTracker } from '@/components/PaymentTracker';
+import { Analytics } from "@vercel/analytics/react"
 
 // Component to track page views on route change
 const AnalyticsTracker = () => {
@@ -38,6 +39,7 @@ function App() {
     <BrowserRouter>
       <AnalyticsTracker />
       <PaymentTracker />
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
