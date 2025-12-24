@@ -52,6 +52,12 @@ const Footer = () => {
                             </li>
                             <li><Link to="/mission" className="hover:text-foreground transition-colors">{t('footer.about')}</Link></li>
                             <li><Link to="/careers" className="hover:text-foreground transition-colors">{t('footer.careers')}</Link></li>
+                            <li>
+                                <Link to="/affiliates" className="hover:text-foreground transition-colors group flex items-center gap-2">
+                                    <span>Affiliate Program</span>
+                                    <span className="text-blue-500 font-bold text-[10px] bg-blue-500/10 border border-blue-500/20 px-1 rounded uppercase">Earn</span>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
