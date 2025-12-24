@@ -8,6 +8,8 @@ import Mission from "@/pages/Mission";
 import Careers from "@/pages/Careers";
 import DataDeletion from "@/pages/DataDeletion";
 import Affiliates from "@/pages/Affiliates";
+import BlogIndex from "@/pages/BlogIndex";
+import BlogPost from "@/pages/BlogPost";
 import './i18n';
 
 import { useEffect } from 'react';
@@ -40,6 +42,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/affiliates" element={<Affiliates />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/contact-sales" element={<ContactSales />} />

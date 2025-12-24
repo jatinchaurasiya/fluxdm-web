@@ -1,4 +1,4 @@
-import { BadgeCheck, Clock, Wallet, MoveRight, CheckCircle2, ShieldCheck, Lock, Users, Zap, TrendingUp, Briefcase } from "lucide-react";
+import { BadgeCheck, Clock, Wallet, MoveRight, CheckCircle2, ShieldCheck, Lock, Users, Zap, TrendingUp, Briefcase, Calendar } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Legal";
@@ -115,6 +115,50 @@ const Affiliates = () => {
                                 </div>
                                 <h3 className="text-lg font-bold mb-2">Agencies</h3>
                                 <p className="text-sm text-muted-foreground">Refer clients to FluxDM for their automation needs and earn on every subscription.</p>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </section>
+
+                {/* Section: Product Features (Selling Points) */}
+                <section className="container mx-auto px-4 py-20 bg-background/50 border-y border-border/50 backdrop-blur-sm">
+                    <FadeIn delay={0.25}>
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold mb-4">Why Users Love FluxDM</h2>
+                            <p className="text-muted-foreground max-w-2xl mx-auto">
+                                FluxDM isn't just an auto-responder. It's a complete growth engine.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent border border-blue-500/10 hover:border-blue-500/30 transition-all group">
+                                <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+                                    <Zap className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">Auto-DM & Replies</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Automatically reply to comments and send DMs to convert followers into leads 24/7.
+                                </p>
+                            </div>
+
+                            <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/10 hover:border-purple-500/30 transition-all group">
+                                <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition-transform">
+                                    <Calendar className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">Content Scheduling</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Plan months of content in advance. Schedule posts, reels, and stories with attached automation triggers.
+                                </p>
+                            </div>
+
+                            <div className="p-8 rounded-2xl bg-gradient-to-br from-indigo-500/5 to-transparent border border-indigo-500/10 hover:border-indigo-500/30 transition-all group">
+                                <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 transition-transform">
+                                    <BadgeCheck className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">Per-Content Rules</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Set granular automation rules for each specific post. Customize the message, delay, and flow for everything.
+                                </p>
                             </div>
                         </div>
                     </FadeIn>
