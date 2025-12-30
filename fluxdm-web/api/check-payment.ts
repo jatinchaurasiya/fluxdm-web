@@ -23,18 +23,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         // Example:
         // const dbPayment = await db.payments.findUnique({ where: { sessionId: session_id } });
         // if (dbPayment) {
-        //     return res.status(200).json({ status: dbPayment.status }); // 'succeeded' or 'failed'
+        //     // Return specific status or map to 'succeeded'/'pending'
+        //     return res.status(200).json({ status: dbPayment.status === 'succeeded' ? 'succeeded' : 'pending' });
         // }
 
-        // Fallback: Check Dodo Payments API
+        // 2. Fallback: Check Dodo Payments API
         const session = await client.checkoutSessions.retrieve(session_id);
 
         const status = session.payment_status === 'succeeded' ? 'succeeded' : 'pending';
-
-        // If it's failed, we might want to return that explicitly
-        if (session.payment_status === 'failed') {
-            return res.status(200).json({ status: 'failed' });
-        }
 
         return res.status(200).json({ status });
 

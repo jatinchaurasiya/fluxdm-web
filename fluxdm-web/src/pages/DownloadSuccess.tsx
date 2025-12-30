@@ -1,21 +1,23 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Copy, Monitor, Apple, AlertCircle, RefreshCw, Loader2 } from 'lucide-react';
+import { Check, Copy, Monitor, Apple, AlertCircle, RefreshCw, Loader2, Link as LinkIcon } from 'lucide-react';
 
 export default function DownloadSuccess() {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+
+    // verificationStatus state as requested 'loading' | 'success' | 'error'
+    // Error state will now cover 'Manual Verification Needed'
     const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
     const [licenseKey, setLicenseKey] = useState<string>('');
     const [isCopied, setIsCopied] = useState(false);
     const [downloading, setDownloading] = useState<'windows' | 'mac' | null>(null);
-    const [statusMessage, setStatusMessage] = useState('Verifying payment...');
+    const [statusMessage, setStatusMessage] = useState('Verifying payment details...');
 
     // Polling refs
     const pollCount = useRef(0);
-    // User requested 5 attempts. 5 * 3s = 15s.
-    const maxPolls = 5;
+    const maxPolls = 10; // 10 attempts * 3s = 30 seconds
 
     // Helper to get license key once payment is confirmed
     const verifyFinalSession = async (sessionId: string) => {
@@ -36,7 +38,7 @@ export default function DownloadSuccess() {
         }
     };
 
-    const checkPaymentStatus = useCallback(async () => {
+    const checkPayment = useCallback(async () => {
         const sessionId = searchParams.get('session_id');
 
         if (!sessionId) {
@@ -44,18 +46,18 @@ export default function DownloadSuccess() {
             return;
         }
 
-        // Handle placeholder from Dodo redirect or malformed URLs
-        // We check for both cases: Uppercase (old) and Lowercase (new/correct) just to be safe.
-        // Also checking for the literal string value that the user reported.
+        // Handle placeholder from Dodo redirect (safety check)
         if (sessionId === '{checkout_session_id}' || sessionId === '{CHECKOUT_SESSION_ID}') {
             setStatusMessage("Hang tight, we're finalizing your order...");
-            // We do NOT poll here. We just wait. The user might need to refresh or check their email if this persists,
-            // but per instructions, we just show this message.
+            // We do not poll or error here, we technically just wait.
+            // But we can trigger the manual verification UI after a long delay if needed,
+            // or just stay here. The user instructions imply simple safety check.
             return;
         }
 
         try {
-            const response = await fetch(`/api/check-payment-status?session_id=${sessionId}`);
+            // Updated endpoint: /api/check-payment
+            const response = await fetch(`/api/check-payment?session_id=${sessionId}`);
             const data = await response.json();
 
             if (data.status === 'succeeded') {
@@ -65,16 +67,12 @@ export default function DownloadSuccess() {
                     setStatus('error');
                     setStatusMessage('Payment succeeded but license generation failed.');
                 }
-            } else if (data.status === 'failed') {
-                setStatus('error');
-                setStatusMessage('Payment failed.');
             } else {
-                // Pending
+                // Pending or failed
                 pollCount.current += 1;
                 if (pollCount.current >= maxPolls) {
                     setStatus('error');
-                    // Manual Fallback Triggered via Error State
-                    setStatusMessage('We couldn\'t auto-verify instantly.');
+                    setStatusMessage('Manual Verification Needed');
                 }
             }
         } catch (error) {
@@ -82,7 +80,7 @@ export default function DownloadSuccess() {
             pollCount.current += 1;
             if (pollCount.current >= maxPolls) {
                 setStatus('error');
-                setStatusMessage('Network hiccup during verification.');
+                setStatusMessage('Manual Verification Needed');
             }
         }
     }, [searchParams, navigate]);
@@ -91,20 +89,16 @@ export default function DownloadSuccess() {
         const sessionId = searchParams.get('session_id');
         if (!sessionId) return;
 
-        if (sessionId === '{checkout_session_id}' || sessionId === '{CHECKOUT_SESSION_ID}') {
-            setStatusMessage("Hang tight, we're finalizing your order...");
-            return;
-        }
-
         if (status === 'success' || status === 'error') return;
 
-        const interval = setInterval(checkPaymentStatus, 3000); // Poll every 3 seconds as requested
+        // Poll every 3 seconds
+        const interval = setInterval(checkPayment, 3000);
 
         // Initial check
-        checkPaymentStatus();
+        checkPayment();
 
         return () => clearInterval(interval);
-    }, [checkPaymentStatus, status, searchParams]);
+    }, [checkPayment, status, searchParams]);
 
     const handleManualRetry = () => {
         setStatus('loading');
@@ -179,19 +173,31 @@ export default function DownloadSuccess() {
                         <p className="text-gray-400 text-lg">
                             {statusMessage}
                         </p>
+                        <p className="text-sm text-gray-500">
+                            We couldn't confirm your payment automatically.
+                        </p>
                     </div>
 
-                    <button
-                        onClick={handleManualRetry}
-                        className="flex items-center space-x-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 rounded-xl font-medium transition-colors"
-                    >
-                        <RefreshCw className="w-5 h-5" />
-                        <span>Try Again</span>
-                    </button>
+                    <div className="flex flex-col space-y-3 w-full max-w-xs">
+                        <button
+                            onClick={handleManualRetry}
+                            className="flex items-center justify-center space-x-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 rounded-xl font-medium transition-colors w-full"
+                        >
+                            <RefreshCw className="w-5 h-5" />
+                            <span>Retry Verification</span>
+                        </button>
 
-                    <p className="text-sm text-gray-500">
-                        If you believe this is an error, contact support@fluxdm.space with Session ID: <br />
-                        <span className="font-mono text-xs text-violet-400">{searchParams.get('session_id')}</span>
+                        <a
+                            href="mailto:support@fluxdm.space"
+                            className="flex items-center justify-center space-x-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-medium transition-colors w-full"
+                        >
+                            <LinkIcon className="w-5 h-5" />
+                            <span>Contact Support</span>
+                        </a>
+                    </div>
+
+                    <p className="text-xs text-gray-500 mt-4">
+                        Session ID: <span className="font-mono text-violet-400">{searchParams.get('session_id')}</span>
                     </p>
                 </motion.div>
             </div>
@@ -227,7 +233,7 @@ export default function DownloadSuccess() {
                 {/* Heading */}
                 <div className="space-y-4">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                        Payment Experience Confirmed!
+                        Payment Successful!
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto">
                         Welcome to FluxDM. Your automated revenue engine is online.
@@ -239,28 +245,27 @@ export default function DownloadSuccess() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="w-full max-w-xl bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 space-y-4 shadow-2xl"
+                    className="w-full max-w-xl bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 space-y-4 shadow-2xl hover:border-violet-500/30 transition-colors"
                 >
-                    <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider">Your License Key</h3>
-                    <div className="relative group">
-                        <div className="bg-black/50 border border-white/10 rounded-xl p-4 flex items-center justify-between font-mono text-lg md:text-xl text-green-400 break-all shadow-inner">
+                    <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-2">Your License Key</h3>
+                    <div
+                        onClick={handleCopy}
+                        className="relative group cursor-pointer"
+                    >
+                        <div className="bg-black/50 border border-white/10 group-hover:border-violet-500/50 rounded-xl p-4 flex items-center justify-between font-mono text-lg md:text-xl text-green-400 break-all shadow-inner transition-all duration-300">
                             {licenseKey}
-                            <button
-                                onClick={handleCopy}
-                                className="ml-4 p-2 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0 relative"
-                                title="Copy to clipboard"
-                            >
+                            <div className="ml-4 p-2 bg-white/5 rounded-lg group-hover:bg-white/10 transition-colors flex-shrink-0">
                                 {isCopied ? (
                                     <Check className="w-5 h-5 text-green-400" />
                                 ) : (
                                     <Copy className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
                                 )}
-                            </button>
+                            </div>
+                        </div>
+                        <div className="absolute -top-8 right-0 bg-violet-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            Click to Copy
                         </div>
                     </div>
-                    <p className="text-sm text-gray-500">
-                        Keep this key safe. You'll need it to activate FluxDM.
-                    </p>
                 </motion.div>
 
                 {/* Download Buttons */}
