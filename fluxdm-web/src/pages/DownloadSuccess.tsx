@@ -14,7 +14,7 @@ export default function DownloadSuccess() {
 
     // Polling refs
     const pollCount = useRef(0);
-    // 5 attempts * 2s = 10s max wait time before failure.
+    // User requested 5 attempts. 5 * 3s = 15s.
     const maxPolls = 5;
 
     // Helper to get license key once payment is confirmed
@@ -45,10 +45,12 @@ export default function DownloadSuccess() {
         }
 
         // Handle placeholder from Dodo redirect or malformed URLs
-        if (sessionId === '{CHECKOUT_SESSION_ID}') {
-            setStatusMessage('Confirming with Dodo...');
-            // We just wait in this state, effectively infinite loading until user fixes their URL or tries again.
-            // But we shouldn't error out immediately.
+        // We check for both cases: Uppercase (old) and Lowercase (new/correct) just to be safe.
+        // Also checking for the literal string value that the user reported.
+        if (sessionId === '{checkout_session_id}' || sessionId === '{CHECKOUT_SESSION_ID}') {
+            setStatusMessage("Hang tight, we're finalizing your order...");
+            // We do NOT poll here. We just wait. The user might need to refresh or check their email if this persists,
+            // but per instructions, we just show this message.
             return;
         }
 
@@ -71,7 +73,8 @@ export default function DownloadSuccess() {
                 pollCount.current += 1;
                 if (pollCount.current >= maxPolls) {
                     setStatus('error');
-                    setStatusMessage('Verification timed out. Payment may still be processing.');
+                    // Manual Fallback Triggered via Error State
+                    setStatusMessage('We couldn\'t auto-verify instantly.');
                 }
             }
         } catch (error) {
@@ -79,25 +82,25 @@ export default function DownloadSuccess() {
             pollCount.current += 1;
             if (pollCount.current >= maxPolls) {
                 setStatus('error');
-                setStatusMessage('Network error during verification.');
+                setStatusMessage('Network hiccup during verification.');
             }
         }
     }, [searchParams, navigate]);
 
     useEffect(() => {
         const sessionId = searchParams.get('session_id');
-        if (!sessionId) return; // handled by checkPaymentStatus or initial render check
+        if (!sessionId) return;
 
-        if (sessionId === '{CHECKOUT_SESSION_ID}') {
-            setStatusMessage('Confirming with Dodo...');
+        if (sessionId === '{checkout_session_id}' || sessionId === '{CHECKOUT_SESSION_ID}') {
+            setStatusMessage("Hang tight, we're finalizing your order...");
             return;
         }
 
         if (status === 'success' || status === 'error') return;
 
-        const interval = setInterval(checkPaymentStatus, 2000); // Poll every 2 seconds
+        const interval = setInterval(checkPaymentStatus, 3000); // Poll every 3 seconds as requested
 
-        // Initial check immediately
+        // Initial check
         checkPaymentStatus();
 
         return () => clearInterval(interval);

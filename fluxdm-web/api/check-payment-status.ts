@@ -18,9 +18,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-        // TODO: CHECK INTERNAL DATABASE HERE FIRST
-        // Example: const dbPayment = await db.payments.findUnique({ where: { sessionId } });
-        // if (dbPayment && dbPayment.status === 'succeeded') return res.status(200).json({ status: 'succeeded' });
+        // 1. CHECK INTERNAL DATABASE FIRST
+        // The webhook might have already processed this payment.
+        // Example:
+        // const dbPayment = await db.payments.findUnique({ where: { sessionId: session_id } });
+        // if (dbPayment) {
+        //     return res.status(200).json({ status: dbPayment.status }); // 'succeeded' or 'failed'
+        // }
 
         // Fallback: Check Dodo Payments API
         const session = await client.checkoutSessions.retrieve(session_id);

@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                     quantity: 1
                 }
             ],
-            return_url: `https://fluxdm.space/download-success?session_id={CHECKOUT_SESSION_ID}`,
+            return_url: `https://fluxdm.space/download-success?session_id={checkout_session_id}`,
             metadata: {
                 license_type: productId
             }
