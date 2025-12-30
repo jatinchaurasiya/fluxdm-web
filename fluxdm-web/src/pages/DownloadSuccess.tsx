@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Copy, Monitor, Apple } from 'lucide-react';
+import { Check, Copy, Monitor, Apple, AlertCircle, RefreshCw } from 'lucide-react';
 
 export default function DownloadSuccess() {
     const [searchParams] = useSearchParams();
@@ -11,34 +11,36 @@ export default function DownloadSuccess() {
     const [isCopied, setIsCopied] = useState(false);
     const [downloading, setDownloading] = useState<'windows' | 'mac' | null>(null);
 
-    useEffect(() => {
-        const verifySession = async () => {
-            const sessionId = searchParams.get('session_id');
+    const checkPayment = useCallback(async () => {
+        const sessionId = searchParams.get('session_id');
 
-            if (!sessionId) {
-                navigate('/pricing');
-                return;
+        if (!sessionId) {
+            navigate('/pricing');
+            return;
+        }
+
+        setStatus('loading');
+
+        try {
+            const response = await fetch(`/api/validate-session?session_id=${sessionId}`);
+            const data = await response.json();
+
+            if (data.success) {
+                setLicenseKey(data.licenseKey);
+                setStatus('success');
+            } else {
+                console.error('Validation failed:', data.error);
+                setStatus('error');
             }
-
-            try {
-                const response = await fetch(`/api/validate-session?session_id=${sessionId}`);
-                const data = await response.json();
-
-                if (data.success) {
-                    setLicenseKey(data.licenseKey);
-                    setStatus('success');
-                } else {
-                    console.error('Validation failed:', data.error);
-                    navigate('/pricing');
-                }
-            } catch (error) {
-                console.error('Error verifying session:', error);
-                navigate('/pricing');
-            }
-        };
-
-        verifySession();
+        } catch (error) {
+            console.error('Error verifying session:', error);
+            setStatus('error');
+        }
     }, [searchParams, navigate]);
+
+    useEffect(() => {
+        checkPayment();
+    }, [checkPayment]);
 
     const handleCopy = () => {
         navigator.clipboard.writeText(licenseKey);
@@ -80,6 +82,46 @@ export default function DownloadSuccess() {
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full"
                 />
+            </div>
+        );
+    }
+
+    if (status === 'error') {
+        return (
+            <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                    <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px]" />
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="relative z-10 max-w-lg w-full flex flex-col items-center text-center space-y-8"
+                >
+                    <div className="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center border border-red-500/20">
+                        <AlertCircle className="w-12 h-12 text-red-500" />
+                    </div>
+
+                    <div className="space-y-4">
+                        <h1 className="text-3xl md:text-4xl font-bold">Verification Failed</h1>
+                        <p className="text-gray-400 text-lg">
+                            We couldn't verify your payment instantly. This can happen due to processing delays.
+                        </p>
+                    </div>
+
+                    <button
+                        onClick={checkPayment}
+                        className="flex items-center space-x-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 rounded-xl font-medium transition-colors"
+                    >
+                        <RefreshCw className="w-5 h-5" />
+                        <span>Manual Verification</span>
+                    </button>
+
+                    <p className="text-sm text-gray-500">
+                        If this persists, please contact support@fluxdm.space with your Session ID: <br />
+                        <span className="font-mono text-xs">{searchParams.get('session_id')}</span>
+                    </p>
+                </motion.div>
             </div>
         );
     }
