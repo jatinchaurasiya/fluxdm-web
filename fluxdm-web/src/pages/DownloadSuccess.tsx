@@ -29,11 +29,13 @@ export default function DownloadSuccess() {
                     setStatus('success');
                 } else {
                     console.error('Validation failed:', data.error);
-                    navigate('/pricing');
+                    setStatus('error');
+                    // navigate('/pricing'); // Disable auto-redirect for debugging
                 }
             } catch (error) {
                 console.error('Error verifying session:', error);
-                navigate('/pricing');
+                setStatus('error');
+                // navigate('/pricing'); // Disable auto-redirect for debugging
             }
         };
 
@@ -80,6 +82,31 @@ export default function DownloadSuccess() {
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full"
                 />
+            </div>
+        );
+    }
+
+    if (status === 'error') {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-4">
+                <div className="max-w-md w-full bg-red-500/10 border border-red-500/20 rounded-xl p-6 text-center space-y-4">
+                    <h2 className="text-xl font-bold text-red-500">Payment Verification Failed</h2>
+                    <p className="text-gray-400">
+                        We couldn't verify your payment session. This might be because the session expired or the payment wasn't confirmed.
+                    </p>
+                    <div className="text-sm font-mono bg-black/50 p-2 rounded text-red-400 break-all">
+                        Session ID: {searchParams.get('session_id') || 'Missing'}
+                    </div>
+                    <button
+                        onClick={() => navigate('/pricing')}
+                        className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
+                    >
+                        Return to Pricing
+                    </button>
+                    <p className="text-xs text-gray-500 mt-4">
+                        If you believe this is an error, please contact support@fluxdm.space
+                    </p>
+                </div>
             </div>
         );
     }
