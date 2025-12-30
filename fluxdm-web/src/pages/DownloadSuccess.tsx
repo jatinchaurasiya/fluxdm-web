@@ -1,7 +1,7 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Copy, Monitor, Apple, AlertCircle, RefreshCw } from 'lucide-react';
+import { Check, Copy, Monitor, Apple, AlertCircle, RefreshCw, Loader2 } from 'lucide-react';
 
 export default function DownloadSuccess() {
     const [searchParams] = useSearchParams();
@@ -10,17 +10,15 @@ export default function DownloadSuccess() {
     const [licenseKey, setLicenseKey] = useState<string>('');
     const [isCopied, setIsCopied] = useState(false);
     const [downloading, setDownloading] = useState<'windows' | 'mac' | null>(null);
+    const [statusMessage, setStatusMessage] = useState('Verifying payment...');
 
-    const checkPayment = useCallback(async () => {
-        const sessionId = searchParams.get('session_id');
+    // Polling refs
+    const pollCount = useRef(0);
+    // 5 attempts * 2s = 10s max wait time before failure.
+    const maxPolls = 5;
 
-        if (!sessionId) {
-            navigate('/pricing');
-            return;
-        }
-
-        setStatus('loading');
-
+    // Helper to get license key once payment is confirmed
+    const verifyFinalSession = async (sessionId: string) => {
         try {
             const response = await fetch(`/api/validate-session?session_id=${sessionId}`);
             const data = await response.json();
@@ -28,19 +26,88 @@ export default function DownloadSuccess() {
             if (data.success) {
                 setLicenseKey(data.licenseKey);
                 setStatus('success');
+                return true;
             } else {
-                console.error('Validation failed:', data.error);
-                setStatus('error');
+                return false;
             }
         } catch (error) {
-            console.error('Error verifying session:', error);
-            setStatus('error');
+            console.error('Final validation error:', error);
+            return false;
+        }
+    };
+
+    const checkPaymentStatus = useCallback(async () => {
+        const sessionId = searchParams.get('session_id');
+
+        if (!sessionId) {
+            navigate('/pricing');
+            return;
+        }
+
+        // Handle placeholder from Dodo redirect or malformed URLs
+        if (sessionId === '{CHECKOUT_SESSION_ID}') {
+            setStatusMessage('Confirming with Dodo...');
+            // We just wait in this state, effectively infinite loading until user fixes their URL or tries again.
+            // But we shouldn't error out immediately.
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/check-payment-status?session_id=${sessionId}`);
+            const data = await response.json();
+
+            if (data.status === 'succeeded') {
+                setStatusMessage('Payment confirmed! Generating license...');
+                const valid = await verifyFinalSession(sessionId);
+                if (!valid) {
+                    setStatus('error');
+                    setStatusMessage('Payment succeeded but license generation failed.');
+                }
+            } else if (data.status === 'failed') {
+                setStatus('error');
+                setStatusMessage('Payment failed.');
+            } else {
+                // Pending
+                pollCount.current += 1;
+                if (pollCount.current >= maxPolls) {
+                    setStatus('error');
+                    setStatusMessage('Verification timed out. Payment may still be processing.');
+                }
+            }
+        } catch (error) {
+            console.error('Polling error:', error);
+            pollCount.current += 1;
+            if (pollCount.current >= maxPolls) {
+                setStatus('error');
+                setStatusMessage('Network error during verification.');
+            }
         }
     }, [searchParams, navigate]);
 
     useEffect(() => {
-        checkPayment();
-    }, [checkPayment]);
+        const sessionId = searchParams.get('session_id');
+        if (!sessionId) return; // handled by checkPaymentStatus or initial render check
+
+        if (sessionId === '{CHECKOUT_SESSION_ID}') {
+            setStatusMessage('Confirming with Dodo...');
+            return;
+        }
+
+        if (status === 'success' || status === 'error') return;
+
+        const interval = setInterval(checkPaymentStatus, 2000); // Poll every 2 seconds
+
+        // Initial check immediately
+        checkPaymentStatus();
+
+        return () => clearInterval(interval);
+    }, [checkPaymentStatus, status, searchParams]);
+
+    const handleManualRetry = () => {
+        setStatus('loading');
+        setStatusMessage('Retrying verification...');
+        pollCount.current = 0; // Reset poll count
+    };
 
     const handleCopy = () => {
         navigator.clipboard.writeText(licenseKey);
@@ -76,12 +143,14 @@ export default function DownloadSuccess() {
 
     if (status === 'loading') {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-black text-white">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white space-y-6">
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full"
-                />
+                >
+                    <Loader2 className="w-12 h-12 text-violet-500" />
+                </motion.div>
+                <p className="text-gray-400 animate-pulse">{statusMessage}</p>
             </div>
         );
     }
@@ -103,23 +172,23 @@ export default function DownloadSuccess() {
                     </div>
 
                     <div className="space-y-4">
-                        <h1 className="text-3xl md:text-4xl font-bold">Verification Failed</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold">Verification Issue</h1>
                         <p className="text-gray-400 text-lg">
-                            We couldn't verify your payment instantly. This can happen due to processing delays.
+                            {statusMessage}
                         </p>
                     </div>
 
                     <button
-                        onClick={checkPayment}
+                        onClick={handleManualRetry}
                         className="flex items-center space-x-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 rounded-xl font-medium transition-colors"
                     >
                         <RefreshCw className="w-5 h-5" />
-                        <span>Manual Verification</span>
+                        <span>Try Again</span>
                     </button>
 
                     <p className="text-sm text-gray-500">
-                        If this persists, please contact support@fluxdm.space with your Session ID: <br />
-                        <span className="font-mono text-xs">{searchParams.get('session_id')}</span>
+                        If you believe this is an error, contact support@fluxdm.space with Session ID: <br />
+                        <span className="font-mono text-xs text-violet-400">{searchParams.get('session_id')}</span>
                     </p>
                 </motion.div>
             </div>
@@ -155,10 +224,10 @@ export default function DownloadSuccess() {
                 {/* Heading */}
                 <div className="space-y-4">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                        Payment Successful!
+                        Payment Experience Confirmed!
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto">
-                        Welcome to FluxDM. Your automated revenue engine is ready to launch.
+                        Welcome to FluxDM. Your automated revenue engine is online.
                     </p>
                 </div>
 
