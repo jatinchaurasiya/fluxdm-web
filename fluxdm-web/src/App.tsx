@@ -10,6 +10,7 @@ import DataDeletion from "@/pages/DataDeletion";
 import Affiliates from "@/pages/Affiliates";
 import BlogIndex from "@/pages/BlogIndex";
 import BlogPost from "@/pages/BlogPost";
+import DownloadSuccess from "@/pages/DownloadSuccess";
 import './i18n';
 
 import { useEffect } from 'react';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/mission" element={<Mission />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/data-deletion" element={<DataDeletion />} />
+        <Route path="/download-success" element={<DownloadSuccess />} />
       </Routes>
     </BrowserRouter>
   );
