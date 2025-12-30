@@ -16,7 +16,9 @@ export default function DownloadSuccess() {
             const sessionId = searchParams.get('session_id');
 
             if (!sessionId) {
-                navigate('/pricing');
+                // navigate('/pricing');
+                console.error('No session ID found in URL');
+                setStatus('error');
                 return;
             }
 
