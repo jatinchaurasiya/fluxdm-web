@@ -32,7 +32,7 @@ const Home = () => {
             <SEO
                 title="FluxDM - Instagram Comment Automation Tool"
                 description="Turn Instagram Comments into Revenue on Autopilot. FluxDM helps creators and agencies automate DM replies, grow engagement, and increase sales."
-                canonical="https://fluxdm.space/"
+                canonical="/"
                 schema={jsonLd}
             />
             <Navbar />
