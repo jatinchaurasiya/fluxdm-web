@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /download-success
+Disallow: /dashboard
 
 Sitemap: https://fluxdm.space/sitemap.xml

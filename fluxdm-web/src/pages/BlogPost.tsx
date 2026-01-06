@@ -6,10 +6,10 @@ import Footer from "@/components/Legal";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowLeft, Clock, Calendar, Share2, MoveRight } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { SEO } from "@/lib/seo";
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -38,30 +38,24 @@ const BlogPost = () => {
     return (
         <div className="min-h-screen bg-background">
             {/* SEO */}
-            <Helmet>
-                <title>{post.title} | FluxDM Blog</title>
-                <meta name="description" content={post.description} />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={post.description} />
-                {post.image && <meta property="og:image" content={window.location.origin + post.image} />}
-                <meta property="article:published_time" content={post.date} />
-                <meta property="article:author" content={post.author} />
-
-                {/* JSON-LD Schema */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        "headline": post.title,
-                        "image": post.image ? [window.location.origin + post.image] : [],
-                        "datePublished": post.date,
-                        "author": [{
-                            "@type": "Person",
-                            "name": post.author,
-                        }]
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title={post.title}
+                description={post.description}
+                canonical={`/blog/${post.slug}`}
+                type="article"
+                image={post.image ? window.location.origin + post.image : undefined}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    "headline": post.title,
+                    "image": post.image ? [window.location.origin + post.image] : [],
+                    "datePublished": post.date,
+                    "author": [{
+                        "@type": "Person",
+                        "name": post.author,
+                    }]
+                }}
+            />
 
             <Navbar />
 

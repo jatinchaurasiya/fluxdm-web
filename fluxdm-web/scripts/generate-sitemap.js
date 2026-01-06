@@ -22,6 +22,7 @@ const routes = [
     '/mission',
     '/careers',
     '/data-deletion'
+    // Explicitly excluding /download-success
 ];
 
 async function generateSitemap() {
