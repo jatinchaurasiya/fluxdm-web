@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { Suspense, useEffect } from 'react';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { useLocation } from 'react-router-dom';
 import { initGA, trackPageView } from '@/lib/analytics';
 import { PaymentTracker } from '@/components/PaymentTracker';
@@ -44,24 +45,26 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AnalyticsTracker />
-      <PaymentTracker />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/affiliates" element={<Affiliates />} />
-          <Route path="/blog" element={<BlogIndex />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/contact-sales" element={<ContactSales />} />
-          <Route path="/mission" element={<Mission />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/data-deletion" element={<DataDeletion />} />
-          <Route path="/download-success" element={<DownloadSuccess />} />
-        </Routes>
-      </Suspense>
+      <ErrorBoundary>
+        <AnalyticsTracker />
+        <PaymentTracker />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/affiliates" element={<Affiliates />} />
+            <Route path="/blog" element={<BlogIndex />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/contact-sales" element={<ContactSales />} />
+            <Route path="/mission" element={<Mission />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/data-deletion" element={<DataDeletion />} />
+            <Route path="/download-success" element={<DownloadSuccess />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

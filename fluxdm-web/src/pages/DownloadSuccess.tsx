@@ -4,9 +4,11 @@ import { Check, Monitor, Apple, Download } from 'lucide-react';
 
 export default function DownloadSuccess() {
     const [downloading, setDownloading] = useState<'windows' | 'mac' | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const handleDownload = async (platform: 'windows' | 'mac') => {
         setDownloading(platform);
+        setError(null);
         try {
             const response = await fetch(`/api/download?platform=${platform}`);
             const data = await response.json();
@@ -15,11 +17,11 @@ export default function DownloadSuccess() {
                 window.location.assign(data.url);
             } else {
                 console.error('Download link generation failed:', data.error);
-                alert('We could not generate your download link. Please contact support@fluxdm.space.');
+                setError('We could not generate your download link. Please contact support.');
             }
         } catch (error) {
             console.error('Download error:', error);
-            alert('A network error occurred. Please check your connection and try again.');
+            setError('A network error occurred. Please check your connection and retry.');
         } finally {
             setDownloading(null);
         }
@@ -112,6 +114,17 @@ export default function DownloadSuccess() {
                     >
                         <div className="w-5 h-5 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
                         <span className="font-medium">Generating secure download link...</span>
+                    </motion.div>
+                )}
+
+                {/* Error State */}
+                {error && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-red-400 flex items-center space-x-3 bg-red-500/10 px-6 py-3 rounded-full border border-red-500/20"
+                    >
+                        <span className="font-medium">{error}</span>
                     </motion.div>
                 )}
 

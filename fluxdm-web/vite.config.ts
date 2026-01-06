@@ -16,7 +16,8 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'animation-vendor': ['framer-motion'],
-          'ui-vendor': ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-label', '@radix-ui/react-separator', '@radix-ui/react-slot', 'class-variance-authority', 'clsx', 'tailwind-merge']
+          'ui-vendor': ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-label', '@radix-ui/react-separator', '@radix-ui/react-slot', 'class-variance-authority', 'clsx', 'tailwind-merge'],
+          'markdown-vendor': ['react-markdown', 'react-syntax-highlighter', 'gray-matter']
         }
       }
     }
