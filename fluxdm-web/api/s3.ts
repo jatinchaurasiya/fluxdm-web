@@ -22,3 +22,15 @@ export const s3Client = new S3Client({
 });
 
 export const BUCKET_NAME = process.env.AWS_BUCKET_NAME!;
+
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+export const getDownloadUrl = async (fileName: string) => {
+    const command = new GetObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: fileName,
+    });
+
+    return getSignedUrl(s3Client, command, { expiresIn: 900 }); // 15 minutes
+};
