@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Calendar, MessageSquare, Zap, BarChart3, Check, MousePointer2, ChevronDown } from 'lucide-react';
-import { FollowGateAnimation } from './ui/follow-gate-animation';
+
 
 import calendarScheduler from '@/assets/calendar-scheduler.png';
 import automationSetting from '@/assets/automationsetting.png';
