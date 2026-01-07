@@ -300,5 +300,37 @@
             "fileName": "Growth_Hacks.pdf",
             "fileDetails": "PDF Document • 2.4 MB"
         }
+    },
+    "automationJourney": {
+        "headline": "How FluxDM Automates Your Viral Journey",
+        "subheadline": "Connect your Instagram and follow these simple steps to automate DMs.",
+        "steps": {
+            "schedule": {
+                "title": "Select & Schedule",
+                "desc": "Pick a post or reel for DM automation."
+            },
+            "keywords": {
+                "title": "Define Keywords",
+                "desc": "Set up key terms to attract your audience."
+            },
+            "automate": {
+                "title": "Automate DMs",
+                "desc": "Schedule personalised DMs with ease."
+            },
+            "viral": {
+                "title": "Wait to go Viral!",
+                "desc": "Let FluxDM grow your engagement effortlessly."
+            }
+        },
+        "visuals": {
+            "schedule": {
+                "header": "Select Post or Reel",
+                "label": "Which Post or Reel do you want to use?"
+            },
+            "keywords": {
+                "header": "Keyword Setup",
+                "label": "What keywords will start your automation?"
+            }
+        }
     }
 }
