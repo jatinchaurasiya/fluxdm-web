@@ -7,6 +7,7 @@ import { FollowGateAnimation } from './ui/follow-gate-animation';
 import calendarScheduler from '@/assets/calendar-scheduler.png';
 import automationSetting from '@/assets/automationsetting.png';
 import dashboardImg from '@/assets/Dashboard.png';
+import automateDm from '@/assets/automate-dm.png';
 
 export const AutomationJourney = () => {
     const { t } = useTranslation();
@@ -252,7 +253,7 @@ const StepVisualKeywords = () => (
 );
 
 const StepVisualAutomate = () => (
-    <div className="flex flex-col items-center w-full h-full relative overflow-hidden pt-2 md:pt-0 md:justify-center">
+    <div className="flex flex-col items-center justify-center w-full h-full relative overflow-hidden pt-2 md:pt-0 md:justify-center">
         {/* Relative header on mobile to prevent overlap, absolute on desktop */}
         <div className="relative md:absolute md:top-4 md:left-4 z-10 text-center md:text-left mb-2 md:mb-0 shrink-0">
             <div className="bg-orange-100 text-orange-700 font-bold px-2 py-0.5 rounded-full text-[10px] md:text-xs mb-1 inline-block">Step 3</div>
@@ -263,7 +264,11 @@ const StepVisualAutomate = () => (
         <div className="w-full flex-1 flex items-center justify-center min-h-0">
             {/* Adjusted scaling - Using responsive scaling to ensure it fits */}
             <div className="scale-[0.5] sm:scale-[0.6] md:scale-[0.75] xl:scale-[0.85] origin-top md:origin-center">
-                <FollowGateAnimation />
+                <img
+                    src={automateDm}
+                    alt="Automate DM Interface"
+                    className="w-auto h-auto max-h-[600px] object-contain drop-shadow-2xl"
+                />
             </div>
         </div>
     </div>
