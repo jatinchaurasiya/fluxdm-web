@@ -7,7 +7,7 @@ import { Calendar, MessageSquare, Zap, BarChart3, Check, MousePointer2, ChevronD
 import calendarScheduler from '@/assets/calendar-scheduler.png';
 import automationSetting from '@/assets/automationsetting.png';
 import dashboardImg from '@/assets/Dashboard.png';
-import automateDm from '@/assets/automate-dm.png';
+import automateDm from '@/assets/AutomateDM.png';
 
 export const AutomationJourney = () => {
     const { t } = useTranslation();
