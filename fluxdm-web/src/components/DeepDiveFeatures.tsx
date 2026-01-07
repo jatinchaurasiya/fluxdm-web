@@ -83,6 +83,7 @@ export const DeepDiveFeatures = () => {
                             src={cashToCommentImg}
                             alt="Comment to Cash Engine"
                             className="w-full h-auto rounded-3xl shadow-lg border border-border"
+                            loading="lazy"
                         />
                     }
                 />

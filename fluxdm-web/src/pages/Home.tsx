@@ -1,4 +1,4 @@
-import { DeepDiveFeatures } from "@/components/DeepDiveFeatures";
+import { lazy, Suspense } from 'react';
 import Testimonials from "@/components/Testimonials";
 import { PricingSection } from "@/components/PricingSection";
 import Footer from "@/components/Legal";
@@ -12,6 +12,9 @@ import ContentSchedulingSection from "@/components/ContentSchedulingSection";
 import { SEO } from "@/lib/seo";
 
 import { AutomationJourney } from "@/components/AutomationJourney";
+
+// Lazy load DeepDiveFeatures because it contains heavy assets
+const DeepDiveFeatures = lazy(() => import("@/components/DeepDiveFeatures").then(module => ({ default: module.DeepDiveFeatures })));
 
 const Home = () => {
     const jsonLd = {
@@ -47,11 +50,11 @@ const Home = () => {
                     </FadeIn>
                 </section>
 
-                {/* Transformation Section Removed */}
-
                 <section id="capabilities">
                     <FadeIn delay={0.3}>
-                        <DeepDiveFeatures />
+                        <Suspense fallback={<div className="h-96 w-full" />}>
+                            <DeepDiveFeatures />
+                        </Suspense>
                     </FadeIn>
                 </section>
 
