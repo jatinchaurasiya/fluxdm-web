@@ -1,0 +1,42 @@
+# Vercel Web Analytics Implementation
+
+## Summary
+Successfully integrated Vercel Web Analytics into the FluxDM web application following the official Vercel documentation for React/Vite projects.
+
+## Changes Made
+
+### Modified Files
+- **src/App.tsx**: Added Vercel Web Analytics integration
+  - Imported `Analytics` component from `@vercel/analytics/react`
+  - Added `<Analytics />` component to the component tree inside the ErrorBoundary, after the Suspense block
+
+## Implementation Details
+
+The `@vercel/analytics` package (v1.6.1) was already present in the project dependencies, so no package installation was required. 
+
+The Analytics component was strategically placed:
+- Inside the `<ErrorBoundary>` wrapper to ensure proper error handling
+- After the `<Suspense>` wrapper to avoid any loading conflicts
+- At the root level of the app to track all routes automatically
+
+This implementation provides:
+- Automatic page view tracking across all routes
+- Integration with React Router for seamless route detection
+- Zero configuration required - works out of the box when deployed to Vercel
+- Compatible with the existing Google Analytics setup (both can coexist)
+
+## Verification
+
+✅ Build completed successfully with `npm run build`
+✅ Linter passed with `npm run lint` (no new errors or warnings introduced)
+✅ TypeScript compilation successful
+✅ No breaking changes to existing functionality
+
+## Next Steps
+
+Once deployed to Vercel:
+1. Enable Web Analytics in the Vercel dashboard (Analytics tab → Enable)
+2. After deployment, verify that `/_vercel/insights/view` requests appear in the browser's Network tab
+3. View analytics data in the Vercel dashboard under the Analytics tab
+
+The implementation follows React best practices and maintains consistency with the existing codebase structure.
