@@ -4,6 +4,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import { useLocation } from 'react-router-dom';
 import { initGA, trackPageView } from '@/lib/analytics';
 import { PaymentTracker } from '@/components/PaymentTracker';
+import { Analytics } from '@vercel/analytics/react';
 import './i18n';
 
 // Lazy load pages for code splitting
@@ -64,6 +65,7 @@ function App() {
             <Route path="/download-success" element={<DownloadSuccess />} />
           </Routes>
         </Suspense>
+        <Analytics />
       </ErrorBoundary>
     </BrowserRouter>
   );
