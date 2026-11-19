@@ -103,6 +103,7 @@ const Navbar = () => {
 
                         <button
                             onClick={() => window.location.href = '/pricing'}
+                            data-ml-goal="signup_click"
                             className="hidden md:flex bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 px-6 py-2.5 rounded-full text-sm font-bold transition-all items-center gap-2 hover:scale-105 active:scale-95 hover:shadow-xl shadow-lg"
                         >
                             {t('nav.getAccess')} <ArrowRight size={16} />
@@ -139,7 +140,14 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
-                            <button className="mt-4 bg-blue-600 text-white w-full py-4 rounded-xl font-bold text-lg">
+                            <button
+                                onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    window.location.href = '/pricing';
+                                }}
+                                data-ml-goal="signup_click"
+                                className="mt-4 bg-blue-600 text-white w-full py-4 rounded-xl font-bold text-lg"
+                            >
                                 {t('nav.download')}
                             </button>
                         </div>

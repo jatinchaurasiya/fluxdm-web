@@ -161,7 +161,13 @@ const BlogPost = () => {
                                 <p className="text-blue-100 text-lg mb-8 max-w-xl mx-auto relative z-10">
                                     Join thousands of creators using FluxDM to turn comments into revenue.
                                 </p>
-                                <Button size="lg" variant="secondary" className="font-semibold h-12 px-8 rounded-full relative z-10 shadow-xl hover:scale-105 transition-transform">
+                                <Button
+                                    onClick={() => navigate('/pricing')}
+                                    data-ml-goal="signup_click"
+                                    size="lg"
+                                    variant="secondary"
+                                    className="font-semibold h-12 px-8 rounded-full relative z-10 shadow-xl hover:scale-105 transition-transform"
+                                >
                                     Get FluxDM Free <MoveRight className="ml-2 w-4 h-4" />
                                 </Button>
                             </div>

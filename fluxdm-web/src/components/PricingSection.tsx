@@ -23,10 +23,15 @@ export function PricingSection() {
             // In a real Next.js app, this hits the API route.
             // Since this is a Vite app, this request might 404 unless a backend proxy or serverless function is set up.
             // We assume the user has a way to serve /api/payment or will set it up.
+            const attribution = window.minilytics?.attribution?.() ?? {};
             const response = await fetch('/api/payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ productId }),
+                body: JSON.stringify({
+                    productId,
+                    ml_visitor_id: attribution.ml_visitor_id,
+                    ml_session_id: attribution.ml_session_id,
+                }),
             });
             const data = await response.json();
             if (data.url) {
@@ -173,6 +178,8 @@ export function PricingSection() {
                                     <Button
                                         onClick={() => handleBuy(plan.productId!)}
                                         disabled={loadingPlan === plan.productId}
+                                        data-ml-goal="checkout_click"
+                                        data-ml-goal-plan={plan.productId === 'pdt_0NUcmVldypcb2Ym5iv62S' ? 'solo' : 'agency'}
                                         className={cn(
                                             "w-full h-12 text-md font-semibold",
                                             plan.highlight
@@ -193,12 +200,14 @@ export function PricingSection() {
                                     </Button>
                                 ) : (
                                     <Link to="/contact-sales" className="w-full">
-                                        <Button className={cn(
-                                            "w-full h-12 text-md font-semibold",
-                                            plan.highlight
-                                                ? "bg-yellow-500 hover:bg-yellow-400 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)] border-none"
-                                                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                                        )}>
+                                        <Button
+                                            data-ml-goal="pricing_cta"
+                                            className={cn(
+                                                "w-full h-12 text-md font-semibold",
+                                                plan.highlight
+                                                    ? "bg-yellow-500 hover:bg-yellow-400 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)] border-none"
+                                                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                            )}>
                                             {plan.buttonText} <ArrowRight className="ml-2 w-4 h-4" />
                                         </Button>
                                     </Link>

@@ -197,10 +197,10 @@ function FluxLandingHero() {
                         animate="visible"
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <a href="#" className="h-12 px-8 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium transition-all hover:shadow-lg flex items-center justify-center">
+                        <a href="#pricing" data-ml-goal="start_trial" className="h-12 px-8 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium transition-all hover:shadow-lg flex items-center justify-center">
                             Start Automating Free
                         </a>
-                        <a href="#pricing" className="h-12 px-8 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground transition-colors flex items-center justify-center">
+                        <a href="#pricing" data-ml-goal="pricing_cta" className="h-12 px-8 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground transition-colors flex items-center justify-center">
                             See Pricing
                         </a>
                     </motion.div>

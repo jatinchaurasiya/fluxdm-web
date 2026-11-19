@@ -28,6 +28,12 @@ const ContactSales = () => {
         e.preventDefault();
         // Console log data as requested
         console.log("Contact Sales Form Data:", formData);
+        window.minilytics?.('identify', {
+            user_id: formData.email,
+            email: formData.email,
+            name: formData.name,
+        });
+        window.minilytics?.('goal', 'signup_completed');
         setIsSubmitted(true);
     };
 

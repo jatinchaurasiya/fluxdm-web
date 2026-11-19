@@ -1,10 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, Monitor, Apple, Download } from 'lucide-react';
 
 export default function DownloadSuccess() {
     const [downloading, setDownloading] = useState<'windows' | 'mac' | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+        const paymentId = searchParams.get('payment_id');
+        const sessionId = searchParams.get('session_id');
+        const status = searchParams.get('status');
+        const email = searchParams.get('customer_email') || searchParams.get('email');
+
+        if (email) {
+            window.minilytics?.('identify', {
+                user_id: email,
+                email,
+                name: email.split('@')[0],
+            });
+        }
+
+        if ((status === 'succeeded' && paymentId) || sessionId) {
+            window.minilytics?.('goal', 'signup_completed');
+        }
+    }, [searchParams]);
 
     const handleDownload = async (platform: 'windows' | 'mac') => {
         setDownloading(platform);

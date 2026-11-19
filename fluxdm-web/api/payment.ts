@@ -15,11 +15,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-        const { productId } = req.body;
+        const { productId, ml_visitor_id: bodyMlVisitorId, ml_session_id: bodyMlSessionId } = req.body;
 
         if (!productId) {
             return res.status(400).json({ error: 'Product ID is required' });
         }
+
+        const mlVisitorId = req.cookies?.['ml_vid'] ?? bodyMlVisitorId ?? '';
+        const mlSessionId = req.cookies?.['ml_sid'] ?? bodyMlSessionId ?? '';
 
         const session = await client.checkoutSessions.create({
             product_cart: [
@@ -30,7 +33,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             ],
             return_url: `https://fluxdm.space/download-success?session_id={checkout_session_id}`,
             metadata: {
-                license_type: productId
+                license_type: productId,
+                ml_visitor_id: mlVisitorId,
+                ml_session_id: mlSessionId
             }
         });
 

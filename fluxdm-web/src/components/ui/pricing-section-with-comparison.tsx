@@ -40,7 +40,7 @@ function Pricing() {
                                 <span className="text-4xl font-bold">{t('comparison.plans.solo.price')}</span>
                                 <span className="text-sm text-muted-foreground"> {t('pricing.plans.solo.period')}</span>
                             </div>
-                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" className="w-full mt-4 block">
+                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" data-ml-goal="checkout_click" data-ml-goal-plan="solo" className="w-full mt-4 block">
                                 <Button variant="outline" className="w-full gap-2">
                                     {t('comparison.plans.solo.cta')} <MoveRight className="w-4 h-4" />
                                 </Button>
@@ -62,7 +62,7 @@ function Pricing() {
                                 <span className="text-4xl font-bold">{t('comparison.plans.agency.price')}</span>
                                 <span className="text-sm text-muted-foreground"> {t('pricing.plans.agency.period')}</span>
                             </div>
-                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" className="w-full mt-4 block">
+                            <a href="https://test.dodopayments.com/buy/" target="_blank" rel="noopener noreferrer" data-ml-goal="checkout_click" data-ml-goal-plan="agency" className="w-full mt-4 block">
                                 <Button className="w-full gap-2 bg-blue-600 hover:bg-blue-500 text-white">
                                     {t('comparison.plans.agency.cta')} <MoveRight className="w-4 h-4" />
                                 </Button>
@@ -80,7 +80,7 @@ function Pricing() {
                             <div className="flex items-baseline gap-1 mt-4">
                                 <span className="text-3xl font-bold">{t('comparison.plans.whiteLabel.price')}</span>
                             </div>
-                            <Link to="/contact-sales" className="w-full mt-4 block">
+                            <Link to="/contact-sales" data-ml-goal="pricing_cta" className="w-full mt-4 block">
                                 <Button variant="outline" className="w-full gap-2">
                                     {t('comparison.plans.whiteLabel.cta')} <MoveRight className="w-4 h-4" />
                                 </Button>
